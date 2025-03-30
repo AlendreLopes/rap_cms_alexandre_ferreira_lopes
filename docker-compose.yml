@@ -1,0 +1,14 @@
+services:
+  rpa_cms:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html/
+    ports:
+      - 8003:80
+
+networks:
+  default:
+    external: true
+    name: mysql

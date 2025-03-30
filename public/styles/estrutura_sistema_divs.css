@@ -1,0 +1,198 @@
+#degrade{
+	width:790px;
+	height:10px;
+	background:url(/public/image/degrade.jpg) top left repeat-x;
+}
+/* Visualizar Exames Convenio */
+#lembrete{
+	margin    :0 auto;
+	width     :350px;
+	text-align:center;
+}
+/*### ######################################################################################## ###*/
+.codigo{
+	letter-spacing:2px;
+	text-align:center;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+/*### ######################################################################################## ###*/
+#usuario{
+	float      :left;
+	width      :120px;
+	color      :#003300;
+	font-weight:bold;
+	text-align :center;
+	background :#EEEEEE;
+	border     :1px dotted #abdfbf;
+}
+
+#sair{
+	float       :right;
+	width       :120px;
+	margin-right:5px;
+	color       :#003300;
+	font-weight :bold;
+	text-align  :center;
+	background  :#EEEEEE;
+	border      :1px dotted #abdfbf;
+}
+
+/*### ################################################## ###*/
+#protocolos{
+	margin:0 auto;
+}
+
+div#protocolo{
+	margin       :0 auto;
+	margin-bottom:5px;
+	width        :110px;
+	color        :#003300;
+	font-weight  :bold;
+	text-align   :center;
+	background   :#EEEEEE;
+	border       :1px dotted #abdfbf;
+}
+
+#protocolo input{
+	width      :100px;
+	text-align :center;
+	font-weight:bold;
+	border     :1px solid #000;
+}
+#protocolo select{
+	font-weight:bold;
+	border     :1px solid #000;
+}
+
+#protocolo input#buscaProtocolos{
+	width:125px;
+}
+
+p#Titulo{
+	text-align    :center;
+	font-size     :16px;
+	font-weight   :bold;
+	letter-spacing:2px;
+	color         :#006633;
+}
+
+/*
+#menu{
+	float:left;
+	width:200px;
+	margin-top:-10px;
+}
+
+.radio{
+	display   :inline;
+	margin    :0 auto;
+	width     :15px;
+	height    :10px;
+	padding   :1px;
+	border    :1px solid #000;
+	background:#FF0000;
+}
+
+*/
+
+/*### Caso use o jQuery ###*/
+#carregando{
+	position  :absolute;
+	min-height:100%;
+	min-width:100%;
+	top       :0;
+	left      :0;
+	background:url(/public/image/fundo_escuro.png) repeat;
+	z-index   :20000;
+}
+#carregando_aviso{
+	position   :absolute;
+	bottom     :5px;
+	left       :5px;
+	padding    :10px;
+	text-align :center;
+	font-weight:normal;
+	border     :1px dashed #003300;
+	background :#FFFFCC;
+	z-index    :20005;
+}
+
+#cadastrando{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	z-index:20000;
+}
+#cadastrando_aviso{
+	position:absolute;
+	bottom:5px;
+	left:5px;
+	padding:10px;
+	border:1px dashed #003300;
+	background-color:#FFFFCC;
+	text-align:center;
+	font-weight:normal;
+	z-index:20005;
+}
+
+/*### Erros nos Fromulários ###*/
+#erros_listar{
+	margin:0 auto;
+	width:390px;
+	padding:10px;
+	font-weight:bold;
+	background:#FF9933;
+}
+#erros ul {
+	margin-left:20px;
+}
+#erros ul li{
+	list-style-type:none;
+	display:block;
+	padding:2px;
+	width:250px;
+	border:1px solid #000;
+}
+
+/*### ######################################################################################## ###*/
+/*### AutoCompletar ###*/
+#searchField {
+	width: 200px;
+}
+
+#results {
+	float:left;
+	margin-left:20px;
+	color:#003300;
+	font-weight:bold;
+	text-align:center;
+	background:#EEEEEE;
+	border:1px dotted #abdfbf;
+	display:none;
+	z-index:1045;
+}
+
+#results div {
+    border-bottom: 1px solid #666;
+    padding: 3px;
+}
+
+#results .selected {
+	background-color: #666;
+	color: #fff;
+}
+
+#results .unselected {
+	background-color: #fff;
+	color: #666;
+}
+
+form #buscar_protocolo{
+	margin:2px;
+}
+
+/*### ######################################################################################## ###*/

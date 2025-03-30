@@ -1,0 +1,155 @@
+h1, h2, h4 {
+	margin       :0 auto;
+	margin-bottom:5px;
+	width        :300px;
+	text-align   :center;
+	font-family  :Arial, Helvetica, sans-serif;
+	font-size    :22px;
+	font-weight  :bold;
+	color        :#060;
+}
+h3 {
+	margin       :0 auto;
+	margin-bottom:5px;
+	width        :450px;
+	text-align   :center;
+	font-family  :Arial, Helvetica, sans-serif;
+	font-size    :20px;
+	font-weight  :bold;
+	color        :#060;
+}
+h4 {font-size:16px;}
+
+img{
+	border:none;
+}
+
+#img_listar{
+	margin:0 auto;
+	width :600px;
+}
+
+#img_listar img{
+	padding:2px;
+	border:1px solid #000;
+}
+
+#img_agrupar{
+	float   :left;
+	margin  :5px;
+	width   :285px;
+	border:solid #000;
+	border-width:1px 0px 1px 0px;
+}
+#img_agrupar a{
+	display:block;
+}
+#img_agrupar span{
+	display:block;
+}
+#imagens{
+	float:right;
+	padding:10px;
+	margin:10px;
+	width:200px;
+	background:#abdfbf;
+}
+
+iframe{
+	border:2px solid #abdfbf;
+}
+
+a{
+	/*display:block;*/
+	letter-spacing:1px;
+	color:#000;
+	font-weight:bold;
+	text-decoration:none;
+}
+a:hover{
+	/*display:block;*/
+	letter-spacing:1px;
+	color:#ccc;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+a#externo{
+	background-image:url(/public/image/external.png);
+	background-position:center right;
+	background-repeat:no-repeat;
+	padding-right:12px;
+}
+
+a#deletar{
+	color:#990000;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+}
+a#deletar:hover{
+	color:#FF0000;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+}
+	
+a#downloads{
+	color:#009966;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+}
+a#downloads:hover{
+	color:#006666;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+}
+a#M{
+	margin:1px;
+	padding-left:2px;
+	padding-right:2px;
+	color:#000;
+	font-size:12px;
+	font-weight:bold;
+	background:#FFCC66;
+	border:1px solid #000;
+	text-decoration:none;
+}
+a#M:hover{
+	margin:1px;
+	padding-left:2px;
+	padding-right:2px;
+	color:#000;
+	font-size:12px;
+	font-weight:bold;
+	background:#FFCC66;
+	border:1px solid #000;
+	text-decoration:none;
+}
+
+a#T{ float:left;}
+a#E{ float:right;}
+
+input, select, textarea{
+	border:1px solid #000;
+}
+
+input:focus, select:focus, textarea:focus{
+	color     :#000;
+	background:#999;
+}
+
+input#valor{
+	width     :115px;
+	background:#FFF;
+	text-align:center;
+}
+
+strong#sim{
+	color:#0000FF;
+}
+strong#nao{
+	color:#990000;
+}

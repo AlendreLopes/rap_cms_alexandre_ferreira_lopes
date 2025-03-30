@@ -1,0 +1,95 @@
+/*### Menu ###*/
+#index_menu, #index_menu_{
+	margin       :0 auto;
+	margin-bottom:2px;
+	padding      :2px;
+	/*width        :724px;*/
+	width        :750px;
+	height       :33px;
+	border       :1px solid #000;
+}
+ul.menuh {
+	margin    : 2px;
+	padding   : 0;
+	float     : left;
+	/*width     : 175px;*/
+	width     : 180px;
+	height    : 25px;
+	background:#abdfbf;
+	border    : 1px solid #000000;
+}
+ul.menuh li.subv {
+	margin    : 0px;
+	padding   : 0px;
+	/*width     : 170px;*/
+	width     : 175px;
+	float     : left;
+	list-style: none;
+}
+ul.menuh ul.menuv {
+	display    : none;
+	position   : absolute;
+	margin-left: -1px;
+}
+ul.menuh ul.menuv ul {
+	left: 170px;
+}
+ul.menuh a {
+	padding: 5px;
+	display: block;
+}
+ul.menuh li a:hover {
+	background: #abdfbf;
+	color     : #fff;
+}
+ul.menuh a.seta {
+	/*background: transparent url(/public/image/indicador-h.gif) right center no-repeat;*/
+}
+ul.menuv, ul.menuv ul {
+	margin    : 0;
+	padding   : 0;
+	border    : 0px;
+	width     : 170px;
+	background: #fff;
+	border-top: 1px solid #000000;
+	z-index   : 10000;
+}
+ul.menuv li {
+	position: relative;
+	list-style: none;
+	border: 0px;
+}
+ul.menuv li a {
+	display        : block;
+	text-decoration: none;
+	border         : 1px solid #000000;
+	border-top     : none;
+	color          : #000;
+	padding        : 5px;
+}
+/* Fix IE. Hide from IE Mac \*/
+* html ul.menuv li {
+	float: left; height: 1%;
+}
+* ul.menuv li a {
+	height: 1%;
+}
+/* End */
+ul.menuv ul {
+	position: absolute;
+	z-index : 10000;
+	display : none;
+	width   : 200px;
+	left    : 170px;
+	top     : -1px;
+}
+ul.menuv li.submenu ul {
+	display: none;
+}
+ul.menuv a.seta {
+	/*background: transparent url(/public/image/indicador-v.gif) right center no-repeat;*/
+}
+ul.menuv li a:hover {
+	background: #F0F0F6;
+	color     : #666;
+}

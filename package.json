@@ -1,0 +1,31 @@
+{
+  "name": "cms_scrap_heap",
+  "version": "1.0.0",
+  "description": "Projeto para construção de um exemplo de CMS para faculdade",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AlendreLopes/rap_cms_alexandre_ferreira_lopes.git"
+  },
+  "keywords": [
+    "cms",
+    "content",
+    "management",
+    "system"
+  ],
+  "author": "alexandre_ferreira_lopes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlendreLopes/rap_cms_alexandre_ferreira_lopes/issues"
+  },
+  "homepage": "https://github.com/AlendreLopes/rap_cms_alexandre_ferreira_lopes#readme",
+  "dependencies": {
+    "blueimp-file-upload": "^10.32.0",
+    "jquery": "^3.7.1",
+    "jquery-mask-plugin": "^1.14.16",
+    "jquery-validation": "^1.21.0"
+  }
+}
