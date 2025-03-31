@@ -11,10 +11,7 @@
     "url": "git+ssh://git@github.com/AlendreLopes/rap_cms_alexandre_ferreira_lopes.git"
   },
   "keywords": [
-    "cms",
-    "content",
-    "management",
-    "system"
+    "cms"
   ],
   "author": "alexandre_ferreira_lopes",
   "license": "ISC",
@@ -24,8 +21,13 @@
   "homepage": "https://github.com/AlendreLopes/rap_cms_alexandre_ferreira_lopes#readme",
   "dependencies": {
     "blueimp-file-upload": "^10.32.0",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "build": "^0.1.4",
+    "datatables": "^1.10.18",
     "jquery": "^3.7.1",
     "jquery-mask-plugin": "^1.14.16",
-    "jquery-validation": "^1.21.0"
+    "jquery-validation": "^1.21.0",
+    "sweetalert2": "^11.17.2"
   }
 }

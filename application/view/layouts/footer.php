@@ -22,7 +22,8 @@
 <div class="container">
     <footer>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-            <div class="col mb-3">
+
+            <div class="col-md-2 mb-3">
                 <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
                     <svg class="bi me-2" width="40" height="32">
                         <use xlink:href="#bootstrap" />
@@ -30,12 +31,7 @@
                 </a>
             </div>
 
-            <div class="col mb-3">
-                col mb-3
-
-            </div>
-
-            <div class="col mb-3">
+            <div class="col-md-3 mb-3">
                 <h5>Section</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
@@ -46,7 +42,7 @@
                 </ul>
             </div>
 
-            <div class="col mb-3">
+            <div class="col-md-3 mb-3">
                 <h5>Section</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
@@ -57,44 +53,123 @@
                 </ul>
             </div>
 
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
+            <div class="col-md-4 mb-3">
+                <h5>Products</h5>
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-2 my-2">
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
+                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
+                                    dy=".3em">
+                                    x
+                                </text>
+                            </svg>
+                        </li>
+                        <li class="ms-3">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
+                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
+                                    dy=".3em">
+                                    x
+                                </text>
+                            </svg>
+                        </li>
+                        <li class="ms-3">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
+                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
+                                    dy=".3em">
+                                    x
+                                </text>
+                            </svg>
+                        </li>
+                        <li class="ms-3">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
+                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
+                                    dy=".3em">
+                                    x
+                                </text>
+                            </svg>
+                        </li>
+                        <li class="ms-3">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
+                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
+                                    dy=".3em">
+                                    x
+                                </text>
+                            </svg>
+                        </li>
+                        <li class="ms-3">
+                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                                focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
+                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
+                                    dy=".3em">
+                                    x
+                                </text>
+                            </svg>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
-        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <>&copy; <?= date('Y')?> Company, Inc. All rights reserved.</p>
+
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4">
+            <?= date('Y') ?> &copy; Company, Inc. All rights reserved.</p>
             <ul class="list-unstyled d-flex">
                 <li class="ms-3">
                     <a class="link-body-emphasis" href="#">
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#twitter" />
-                        </svg>
+                        <i class="bi bi-twitter" style="font-size: 1.5rem;"></i>
                     </a>
                 </li>
                 <li class="ms-3">
                     <a class="link-body-emphasis" href="#">
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#instagram" />
-                        </svg>
+                        <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
                     </a>
                 </li>
                 <li class="ms-3">
                     <a class="link-body-emphasis" href="#">
-                        <svg class="bi" width="24" height="24">
-                            <use xlink:href="#facebook" />
-                        </svg>
+                        <i class="bi bi-instagram" style="font-size: 1.5rem;"></i>
                     </a>
                 </li>
                 <li class="ms-3">
-                    <a class="link-body-emphasis" href="#">
-                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <a class="link-body-emphasis" href="#" title="Back to the top">
+                        <i class="bi bi-paypal" style="font-size: 1.5rem;"></i>
+                    </a>
+                </li>
+                <li class="ms-3">
+                    &nbsp;
+                </li>
+                <li class="ms-3">
+                    <a class="link-body-emphasis" href="#" title="Back to the top">
+                        <i class="bi bi-arrow-up-square-fill" style="font-size: 1.5rem; color:blueviolet;"></i>
                     </a>
                 </li>
             </ul>

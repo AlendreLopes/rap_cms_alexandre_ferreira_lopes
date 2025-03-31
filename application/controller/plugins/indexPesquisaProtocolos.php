@@ -21,7 +21,7 @@ $Laudo     = $SQL -> Consultar("SELECT * FROM protocolos WHERE _protocolo = '$Pr
 $Laudos    = mysql_num_rows($Laudo);
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -175,7 +175,7 @@ if($Laudos)
 	$g  = $ls[_genero];
 	$c  = $ls[_clinica_titulo];
 	
-	// Anatomia Patológica
+	// Anatomia Patolï¿½gica
 	$citopatologia  = $SQL -> Consultar("SELECT * FROM laudos_ap_citopatologia WHERE _laudo = '$i'");
 	$citopatologias = mysql_num_rows($citopatologia);
 	if($citopatologias)
@@ -286,7 +286,7 @@ if($Laudos)
 		}
 	}
 	
-	// Diagnósticos por Imagem
+	// Diagnï¿½sticos por Imagem
 	$endoscopia  = $SQL -> Consultar("SELECT * FROM laudos_di_endoscopia WHERE _laudo = '$i'");
 	$endoscopias = mysql_num_rows($endoscopia);
 	if($endoscopias)
@@ -542,7 +542,7 @@ if($Laudos)
 	
 	// Medicina Laboratorial
 	
-	// Análise de Líquidos Cavitários
+	// Anï¿½lise de Lï¿½quidos Cavitï¿½rios
 	$ascitico  = $SQL -> Consultar("SELECT * FROM laudos_ml_al_ascitico WHERE _laudo = '$i'");
 	$asciticos = mysql_num_rows($ascitico);
 	if($asciticos)
@@ -728,7 +728,7 @@ if($Laudos)
 			$aviso     = 1;
 			?>
 			<tr>
-			<td colspan="7"><strong>Bioquímica</strong></td>
+			<td colspan="7"><strong>Bioquï¿½mica</strong></td>
 			</tr>
 			<tr>
 			<td align="center">
@@ -744,7 +744,7 @@ if($Laudos)
 		}
 	}
 	
-	// Doenças Genéticas
+	// Doenï¿½as Genï¿½ticas
 	$doenca  = $SQL -> Consultar("SELECT * FROM laudos_ml_doencas_geneticas WHERE _laudo = '$i'");
 	$doencas = mysql_num_rows($doenca);
 	if($doencas)
@@ -930,7 +930,7 @@ if($Laudos)
 			$aviso     = 1;
 			?>
 			<tr>
-			<td colspan="7"><strong>Relatório de Exames</strong></td>
+			<td colspan="7"><strong>Relatï¿½rio de Exames</strong></td>
 			</tr>
 			<tr>
 			<td align="center">
@@ -1214,7 +1214,7 @@ if($Laudos)
 			$aviso     = 1;
 			?>
 			<tr>
-			<td colspan="7"><strong>Hematócrito</strong></td>
+			<td colspan="7"><strong>Hematï¿½crito</strong></td>
 			</tr>
 			<tr>
 			<td align="center">
@@ -1888,7 +1888,7 @@ if($Laudos)
 			$aviso     = 1;
 			?>
 			<tr>
-			<td colspan="7"><strong>Giárdia</strong></td>
+			<td colspan="7"><strong>Giï¿½rdia</strong></td>
 			</tr>
 			<tr>
 			<td align="center">
@@ -2130,7 +2130,7 @@ if($Laudos)
 		}
 	}
 	
-	// Microscopia Eletrônica
+	// Microscopia Eletrï¿½nica
 	$microscopia  = $SQL -> Consultar("SELECT * FROM laudos_ml_microscopia_eletronica WHERE _laudo = '$i'");
 	$microscopias = mysql_num_rows($microscopia);
 	if($microscopias)
@@ -2190,7 +2190,7 @@ if($Laudos)
 		}
 	}
 	
-	// Parasitológico
+	// Parasitolï¿½gico
 	$coprologico  = $SQL -> Consultar("SELECT * FROM laudos_ml_p_coprologico WHERE _laudo = '$i'");
 	$coprologicos = mysql_num_rows($coprologico);
 	if($coprologicos)
@@ -2420,7 +2420,7 @@ if($Laudos)
 		}
 	}
 	
-	// Urinálise
+	// Urinï¿½lise
 	$analise_fisico  = $SQL -> Consultar("SELECT * FROM laudos_ml_u_analise_fisico WHERE _laudo = '$i'");
 	$analise_fisicos = mysql_num_rows($analise_fisico);
 	if($analise_fisicos)
@@ -2434,7 +2434,7 @@ if($Laudos)
 			$aviso     = 1;
 			?>
 			<tr>
-			<td colspan="7"><strong>Análise Físico Químico</strong></td>
+			<td colspan="7"><strong>Anï¿½lise Fï¿½sico Quï¿½mico</strong></td>
 			</tr>
 			<tr>
 			<td align="center">
@@ -2574,7 +2574,7 @@ if($Laudos)
 			$aviso     = 1;
 			?>
 			<tr>
-			<td colspan="7"><strong>Proteína Creatinina</strong></td>
+			<td colspan="7"><strong>Proteï¿½na Creatinina</strong></td>
 			</tr>
 			<tr>
 			<td align="center">

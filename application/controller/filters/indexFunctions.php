@@ -29,6 +29,7 @@ class Functions
 		// $Espacos = strrpos($texts," ", (strlen($texts) -20));
 		return $text = substr($texts,0,20).'...';
 	}
+	
 	public function texts($texts): string
 	{
 		// $Espacos = strrpos($texts," ", (strlen($texts) -100));
@@ -43,12 +44,13 @@ class Functions
 		
 		$image_title  = $new_title.".".$extantion;
 		
-		if(file_exists("/public/images/". $image_title)
+		if(file_exists("/public/images/". $image_title))
 		{
 			$image_title($extantion);
 		}
-		return $image_title
-	
+		return $image_title;
+	}
+
 	// Functions::reduz_imagem($image_Temp,800,600,$imageNameal)
 	public function reduz_imagem($img, $max_x, $max_y, $nome_foto)
 	{
@@ -79,6 +81,7 @@ class Functions
 		
 		return @imagejpeg($image_p, $nome_foto, 100);
 	}
+
 	// Fun��o para Cofigurar uma Data futura, usada para disponibilizar
 	// os Resultados por um per�odo de 30 dias...
 	public function nova_data($Data, $Dia, $Mes, $Ano)

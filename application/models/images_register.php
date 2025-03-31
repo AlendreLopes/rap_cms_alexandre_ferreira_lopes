@@ -16,21 +16,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	}
 
 	$SQL         = new Connect();
-	
 	$laudo       = $_POST['laudo'];
-	
 	$indice      = $_POST['indice'];
-	
 	$cookie      = $_POST['cookie'];
-	
 	$imagens     = $_FILES['imagens'];
-	
 	$titulo      = $imagens['name'];
-	
 	$temporario  = $imagens['tmp_name'];
-	
 	$tamanho     = $imagens['size'];
-	
+	$lettre_c    = array("ç" , "Ç");
+	$lettre_a    = array("á", "à", "ã", "â", "Á", "À", "Ã", "Â");
+	$lettre_e    = array("é", "è", "ẽ", "ê", "É", "È", "Ẽ", "Ê");
+	$lettre_i    = array("í", "ì", "ĩ", "î", "Í", "Ì", "Ĩ", "Î");
+	$lettre_o    = array("ó", "ò", "õ", "ô", "Ó", "Ò", "Õ", "Ô");
+	$lettre_u    = array("ú", "ù", "ũ", "û", "ü", "Ú", "Ù", "Ũ", "Û", "Ü");
+
 	$separador   = "_";
 	//Removendo espa�os do inicio e do fim da string
 	$string      = trim($titulo);
@@ -41,28 +40,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$string      = urldecode($string);
 	$string      = mb_convert_encoding($string, "UTF-8");
 	//Substituindo todos os espa�os por $separador
-	$string      = preg_replace("[[:space:]]", $separador, $string);
+	$string      = str_ireplace("[[:space:]]", $separador, $string);
 	//Substituindo caracteres especiais pela letra respectiva
-	$string      = preg_replace("[��]", "c", $string);
-	$string      = preg_replace("[����������]", "a", $string);
-	$string      = preg_replace("[��������]", "e", $string);
-	$string      = preg_replace("[��������]", "i", $string);
-	$string      = preg_replace("[����������]", "o", $string);
-	$string      = preg_replace("[��������]", "u", $string);
+	$string      = str_ireplace($lettre_c, "c", $string);
+	$string      = str_ireplace($lettre_a, "a", $string);
+	$string      = str_ireplace($lettre_e, "e", $string);
+	$string      = str_ireplace($lettre_i, "i", $string);
+	$string      = str_ireplace($lettre_o, "o", $string);
+	$string      = str_ireplace($lettre_u, "u", $string);
 	//Substituindo outros caracteres por "$separador"
-	$string      = preg_replace("(\()|(\))s", $separador, $string);
-	$string      = preg_replace("(\/)|(\\\)s", $separador, $string);
-	$string      = preg_replace("(\[)|(\])s", $separador, $string);
-	$string      = preg_replace("[@#\$%&\*\+=\|�]", $separador, $string);
-	$string      = preg_replace("[;:'\"<>,?!_-]", $separador, $string);
-	$string      = preg_replace("[��]", $separador, $string);
-	$string      = preg_replace("(�)+", $separador, $string);
-	$string      = preg_replace("[`�~^�]", $separador, $string);
-	
+	$string      = str_ireplace("(\(|(\))s", $separador, $string);
+	$string      = str_ireplace("(\/)|(\\\)s", $separador, $string);
+	$string      = str_ireplace("(\{\[)|(\]\})s", $separador, $string);
+	$string      = str_ireplace("[@#\$%&\*\+=\|]", $separador, $string);
+	$string      = str_ireplace("[;:'\"<>,?!_-]", $separador, $string);
+	$string      = str_ireplace("[`~^¨]", $separador, $string);
 	// Pasta Local
-	$folder_path = "../../public/images_e/";
+	$folder_path = "../../public/images/products/";
 	// Titulo da imagem
-	$image_name    = time().'_'.$string;
+	$image_name    =  strtolower(time().'_'.$string);
 	// Nome Local
 	$local_name  = $folder_path.$image_name;
 	
