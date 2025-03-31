@@ -57,83 +57,30 @@
                 <h5>Products</h5>
                 <div class="d-flex flex-column flex-sm-row justify-content-between py-2 my-2">
                     <ul class="list-unstyled d-flex">
-                        <li class="ms-3">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
-                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
-                                focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
-                                    dy=".3em">
-                                    x
-                                </text>
-                            </svg>
+                        <li class="m-3">
+                            <a href="#" title="T-shirts">
+                                <i class="fa-solid fa-shirt" style="font-size:48px; color:blueviolet;"></i>
+                            </a>
                         </li>
-                        <li class="ms-3">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
-                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
-                                focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
-                                    dy=".3em">
-                                    x
-                                </text>
-                            </svg>
+                        <li class="m-3">
+                            <a href="#" title="Glasses">
+                                <i class="fa-solid fa-glasses" style="font-size:48px;"></i>
+                            </a>
                         </li>
-                        <li class="ms-3">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
-                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
-                                focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
-                                    dy=".3em">
-                                    x
-                                </text>
-                            </svg>
+                        <li class="m-3">
+                            <a href="#" title="Costumes">
+                                <i class="fa-solid fa-user-tie" style="font-size:48px; color:red;"></i>
+                            </a>
                         </li>
-                        <li class="ms-3">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
-                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
-                                focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
-                                    dy=".3em">
-                                    x
-                                </text>
-                            </svg>
+                        <li class="m-3">
+                            <a href="#" title="Vest">
+                                <i class="fa-solid fa-vest" style="font-size:48px; color:yellow;"></i>
+                            </a>
                         </li>
-                        <li class="ms-3">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
-                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
-                                focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
-                                    dy=".3em">
-                                    x
-                                </text>
-                            </svg>
-                        </li>
-                        <li class="ms-3">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                                width="50" height="50" xmlns="http://www.w3.org/2000/svg" role="img"
-                                aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
-                                focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-                                <text class="font-size:0.5rem;" x="50%" y="50%" fill="var(--bs-secondary-color)"
-                                    dy=".3em">
-                                    x
-                                </text>
-                            </svg>
+                        <li class="m-3">
+                            <a href="#" title="Shoes">
+                                <i class="fa-solid fa-shoe-prints" style="font-size:48px; color:violet;"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -142,26 +89,28 @@
         </div>
 
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4">
+
             <?= date('Y') ?> &copy; Company, Inc. All rights reserved.</p>
+
             <ul class="list-unstyled d-flex">
                 <li class="ms-3">
                     <a class="link-body-emphasis" href="#">
-                        <i class="bi bi-twitter" style="font-size: 1.5rem;"></i>
+                        <i class="fa-brands fa-square-twitter" style="font-size:30px;"></i>
                     </a>
                 </li>
                 <li class="ms-3">
                     <a class="link-body-emphasis" href="#">
-                        <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
+                        <i class="fa-brands fa-facebook" style="font-size:30px;"></i>
                     </a>
                 </li>
                 <li class="ms-3">
                     <a class="link-body-emphasis" href="#">
-                        <i class="bi bi-instagram" style="font-size: 1.5rem;"></i>
+                        <i class="fa-brands fa-square-instagram" style="font-size:30px;"></i>
                     </a>
                 </li>
                 <li class="ms-3">
-                    <a class="link-body-emphasis" href="#" title="Back to the top">
-                        <i class="bi bi-paypal" style="font-size: 1.5rem;"></i>
+                    <a class="link-body-emphasis" href="#">
+                        <i class="fa-brands fa-paypal" style="font-size:30px;"></i>
                     </a>
                 </li>
                 <li class="ms-3">
@@ -169,10 +118,11 @@
                 </li>
                 <li class="ms-3">
                     <a class="link-body-emphasis" href="#" title="Back to the top">
-                        <i class="bi bi-arrow-up-square-fill" style="font-size: 1.5rem; color:blueviolet;"></i>
+                        <i class="fa-solid fa-circle-arrow-up" style="font-size:30px; color:blueviolet;"></i>
                     </a>
                 </li>
             </ul>
+
         </div>
     </footer>
 </div>

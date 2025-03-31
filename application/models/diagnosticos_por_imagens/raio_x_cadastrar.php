@@ -1,14 +1,11 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] == "POST")
-{
-	
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
 	function __autoload($classe)
 	{
 		$pastas = array('filters', 'log', 'plugins');
-		foreach ($pastas as $pasta)
-		{
-			if (file_exists("../../controller/{$pasta}/index{$classe}.php"))
-			{
+		foreach ($pastas as $pasta) {
+			if (file_exists("../../controller/{$pasta}/index{$classe}.php")) {
 				include_once "../../controller/{$pasta}/index{$classe}.php";
 			}
 		}
@@ -17,16 +14,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$SQL = new Connect();
 
 	$c_0 = Functions::seg_($_POST["laudo"]);
-	
+
 	$c_2 = !empty($_POST["c_2"]) ? Functions::seg_($_POST["c_2"]) : "Meketrefe";
-	
+
 	$c_3 = !empty($_POST["c_3"]) ? Functions::seg_($_POST["c_3"]) : "Meketrefe";
-	
+
 	$c_4 = !empty($_POST["c_4"]) ? Functions::seg_($_POST["c_4"]) : "Meketrefe";
-	
+
 	$c_5 = !empty($_POST["c_5"]) ? Functions::seg_($_POST["c_5"]) : "Meketrefe";
-	
-	$Resultado = $SQL -> Inserir("INSERT INTO laudos_di_raio_x
+
+	$Resultado = $SQL->Inserir("INSERT INTO laudos_di_raio_x
 	(
 		_laudo,
 		_regiao,
@@ -44,23 +41,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 		'$c_5',
 		NOW()
 	)");
-	
-	if($Resultado)
-	{
+
+	if ($Resultado) {
 		$L_1 = $_SERVER['REMOTE_ADDR'];
 		$L_2 = $_COOKIE['sl_hash'];
 		$L_3 = "cadastrar";
-		$L_4 = "Ação Cadastrar Laudo Raio-x Protocolo: $c_0";
-		$L_5 = $SQL -> Inserir("INSERT INTO tb_log (_ip,_data,_usuario,_acao,_texto) VALUES ('$L_1',NOW(),'$L_2','$L_3','$L_4')");
+		$L_4 = "Aï¿½ï¿½o Cadastrar Laudo Raio-x Protocolo: $c_0";
+		$L_5 = $SQL->Inserir("INSERT INTO tb_log (_ip,_data,_usuario,_acao,_texto) VALUES ('$L_1',NOW(),'$L_2','$L_3','$L_4')");
 		echo 1;
-	}
-	else
-	{
+	} else {
 		echo 0;
 	}
-	
-	$Otimizar = $SQL -> Atualizar("OPTIMIZE TABLE laudos_di_raio_x");
-	
+
+	$Otimizar = $SQL->Atualizar("OPTIMIZE TABLE laudos_di_raio_x");
+
 }
 
 ?>

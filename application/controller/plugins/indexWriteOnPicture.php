@@ -33,7 +33,7 @@ class WriteOnPicture
     var $save        = false;               // save out file: TRUE, FALSE
     var $error       = null;                // return error message
 
-    function Action()
+    public function Action()
     {
         // Set function to create image
         if (!$this->inputImage)

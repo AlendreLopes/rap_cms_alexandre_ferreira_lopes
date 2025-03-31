@@ -1,3 +1,20 @@
+<?php
+/*
+include("application/controller/filters/indexSessions.php");
+
+function __autoload($classe)
+{
+    $pastas = array('filters', 'log', 'plugins');
+    foreach ($pastas as $pasta) {
+        if (file_exists("application/controller/{$pasta}/index{$classe}.php")) {
+            include_once "application/controller/{$pasta}/index{$classe}.php";
+        }
+    }
+}
+
+$SQL = new Connect();
+*/
+?>
 <!doctype html>
 
 <html lang="en" data-bs-theme="auto">
@@ -13,9 +30,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
-    <!-- Bootstrap-icons -->
-    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-
+    <!-- Fontawesome-icons -->
+     <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="/node_modules/datatables/media/css/jquery.dataTables.min.css">
 
@@ -28,20 +44,22 @@
 </head>
 
 <body>
- 
-    <!-- header -->
-    <?php include("application/view/layouts/heager.php"); ?>
 
-    <!-- carousel -->
+    <!-- Header -->
+    <?php include("application/view/layouts/header.php"); ?>
+
+    <!-- Carousel -->
     <?php include("application/view/layouts/carousel.php"); ?>
 
-    <!-- content -->
+    <!-- Content -->
     <div class="container">
         <?php include("application/view/layouts/main.php"); ?>
     </div>
 
-    <!-- footer -->
+    <!-- Footer -->
     <?php include("application/view/layouts/footer.php"); ?>
+
+    <!-- Scripts -->
 
     <!-- Jquery JS -->
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
@@ -54,6 +72,9 @@
 
     <!-- Sweet alert js -->
     <script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <!-- Fontawesome icons -->
+     <script src="/node_modules/@fortawesome/fontawesome-free/js/all.css"></script>
 
     <!-- Main scripts -->
     <script src="/public/assets/js/main.js"></script>
