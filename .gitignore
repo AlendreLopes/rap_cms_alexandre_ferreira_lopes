@@ -1,4 +1,4 @@
-/node_modules
-/public/images/products
-/public/images/users
+node_modules
+public/images/products
+public/images/users
 
