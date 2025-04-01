@@ -1,4 +1,4 @@
-<div id="myCarousel" class="carousel slide mb-6 mt-1" data-bs-ride="carousel">
+<div id="myCarousel" class="carousel slide mb-6 py-4 mt-1" data-bs-ride="carousel">
 
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
