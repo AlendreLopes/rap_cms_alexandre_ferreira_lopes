@@ -1,3 +1,0 @@
- - 127.0.0.1 - usuario_nome - Ação Inserir Protocolo: 00012002-10 
- - 127.0.0.1 -  - Ação Excluir Protocolo Indice: 8878
- - 127.0.0.1 -  - Ação Excluir Clínica Indice: 394 

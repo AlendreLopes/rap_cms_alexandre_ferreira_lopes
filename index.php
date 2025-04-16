@@ -1,19 +1,9 @@
 <?php
-/*
-include("application/controller/filters/indexSessions.php");
 
-function __autoload($classe)
-{
-    $pastas = array('filters', 'log', 'plugins');
-    foreach ($pastas as $pasta) {
-        if (file_exists("application/controller/{$pasta}/index{$classe}.php")) {
-            include_once "application/controller/{$pasta}/index{$classe}.php";
-        }
-    }
-}
+include 'application/library/filters/Functions.php';
 
-$SQL = new Connect();
-*/
+// dd(parse_url($_SERVER['REQUEST_URI']));
+
 ?>
 <!doctype html>
 
@@ -31,7 +21,7 @@ $SQL = new Connect();
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Fontawesome-icons -->
-     <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.css">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="/node_modules/datatables/media/css/jquery.dataTables.min.css">
 
@@ -46,21 +36,21 @@ $SQL = new Connect();
 <body>
 
     <!-- Header -->
-    <?php include("application/view/layouts/header.php"); ?>
+    <header>
+        <?php include 'application/views/partials/header.php'; ?>
+    </header>
 
-    <!-- Carousel -->
-    <?php include("application/view/layouts/carousel.php"); ?>
-
-    <!-- Content -->
-    <div class="container">
-        <?php include("application/view/layouts/main.php"); ?>
-    </div>
+    <!-- Main Router Content -->
+    <main class="container">
+        <?php include 'application/routers.php'; ?>
+    </main>
 
     <!-- Footer -->
-    <?php include("application/view/layouts/footer.php"); ?>
+    <footer>
+        <?php include 'application/views/partials/footer.php'; ?>
+    </footer>
 
     <!-- Scripts -->
-
     <!-- Jquery JS -->
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 
@@ -74,7 +64,7 @@ $SQL = new Connect();
     <script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <!-- Fontawesome icons -->
-     <script src="/node_modules/@fortawesome/fontawesome-free/js/all.css"></script>
+    <script src="/node_modules/@fortawesome/fontawesome-free/js/all.css"></script>
 
     <!-- Main scripts -->
     <script src="/public/assets/js/main.js"></script>
@@ -85,28 +75,28 @@ $SQL = new Connect();
 
     <!-- Session success -->
     <?php if (isset($_SESSION['success'])): ?>
-        <script>
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "{{ session('success') }}",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        </script>
+            <script>
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "{{ session('success') }}",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            </script>
     <?php endif; ?>
 
     <!-- Session Error -->
     <?php if (isset($_SESSION['error'])): ?>
-        <script>
-            Swal.fire({
-                position: "top-end",
-                icon: "error",
-                title: "{{ session('error') }}",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        </script>
+            <script>
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "{{ session('error') }}",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            </script>
     <?php endif; ?>
 
 </body>

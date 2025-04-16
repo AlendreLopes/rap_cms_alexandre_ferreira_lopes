@@ -1,8 +1,9 @@
 services:
-  rpa_cms:
+  rap_cms:
     build: 
       context: .
       dockerfile: Dockerfile
+    container_name: 'rap_cms'
     volumes:
       - .:/var/www/html/
     ports:
