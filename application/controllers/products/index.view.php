@@ -2,4 +2,4 @@
 
 $heading = "Products";
 
-echo "Products page!";
+echo "Products list page!";

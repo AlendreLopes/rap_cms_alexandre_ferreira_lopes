@@ -9,7 +9,7 @@
 // use PDOException;
 // use PDOStatement;
 
-class Connection
+class ConnectionUsers
 {
     protected $instance;
 

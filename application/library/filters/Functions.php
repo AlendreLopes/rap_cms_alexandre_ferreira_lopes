@@ -10,3 +10,7 @@ function dd($value) {
 
     die();
 }
+
+function whatURI($getURI){
+    $filterURI = parse_url($_SERVER['REQUEST_URI'])['path'];
+}

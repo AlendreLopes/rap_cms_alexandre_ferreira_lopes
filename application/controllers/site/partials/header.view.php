@@ -1,9 +1,9 @@
 <!-- Navbar -->
 <section>
-    <?php include 'navbar.php'; ?>
+    <?php include 'navbar.view.php'; ?>
 </section>
 
 <!-- Carousel -->
 <section class="mt-5">
-    <?php include 'carousel.php'; ?>
+    <?php include 'carousel.view.php'; ?>
 </section>

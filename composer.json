@@ -1,0 +1,21 @@
+{
+    "name": "alendre/rap_cms_application",
+    "description": "RAP CMS project to college",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Application\\": "application/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexandre Lopes",
+            "email": "alendrelopes@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "monolog/monolog": "^3.9"
+    }
+}

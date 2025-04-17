@@ -2,18 +2,25 @@
 
 // namespace Application\Controllers;
 
-include 'routers.php';
+function controller($serverURI, $routers)
+{
 
-function controller($serverURI, $routers){
-
-    $filterURI = parse_url($_SERVER['REQUEST_URI'])['path'];
+    $filterURI = parse_url($serverURI)['path'];
 
     if (array_key_exists($filterURI, $routers)) {
-        require $routers[$filterURI];
+        // require $routers[$filterURI];
+        $router = $routers[$filterURI];
+        return $router;
     } else {
-        require 'application/views/404.php';
+        abort($errorCode = 404);
     }
-    
+
 }
 
-controller($_SERVER['REQUEST_URI'], routers());
+function abort($errorCode)
+{
+
+    http_response_code($errorCode);
+
+    require "views/{$errorCode}.php";
+}

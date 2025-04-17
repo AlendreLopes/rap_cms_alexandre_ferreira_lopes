@@ -36,10 +36,10 @@
 
             <ul class="navbar-nav col-lg-8 justify-content-lg-center">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link <?= whatURI('/') ? 'ative' : '' ?>" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/products">Products</a>
+                    <a class="nav-link <?= whatURI('/product') ? 'ative' : '' ?>" href="/products">Products</a>
                 </li>
                 <!-- Hidden this links -->
                 <!-- <li class="nav-item">
@@ -55,10 +55,10 @@
                     </ul>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog">Blog</a>
+                    <a class="nav-link <?= whatURI('/blog') ? 'ative' : '' ?>" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link <?= whatURI('/contact') ? 'ative' : '' ?>" href="/contact">Contact</a>
                 </li>
             </ul>
 
