@@ -16,6 +16,7 @@
     ],
     "minimum-stability": "beta",
     "require": {
-        "monolog/monolog": "^3.9"
+        "monolog/monolog": "^3.9",
+        "joshtronic/php-loremipsum": "dev-master"
     }
 }

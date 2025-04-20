@@ -32,18 +32,11 @@
 
     <!-- Header -->
     <header>
-
         <?php require Views::controllers('site/partials/header.php'); ?>
-
-        <!-- Carousel -->
-        <section class="mt-5 pt-3">
-            <?php require Views::controllers('site/partials/carousel.php'); ?>
-        </section>
-
     </header>
 
     <!-- Slot Main Content -->
-    <main class="container">
+    <main class="container mt-3 py-5">
         <?php require Views::views($slot); ?>
     </main>
 

@@ -11,6 +11,14 @@ function dd($value) {
     die();
 }
 
-function whatURI($getURI){
-    $filterURI = parse_url($_SERVER['REQUEST_URI'])['path'];
+function sameUri($pagh) : bool {
+    return $pagh;    
+}
+
+function authorized($condition, $status = Response::FORBIDDEN)
+{
+    if($condition)
+    {
+        abort($status);
+    }
 }

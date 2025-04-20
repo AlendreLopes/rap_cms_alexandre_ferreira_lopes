@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>RAP CMS - Scrap Heap</title>
+    <title>RAP CMS - Products</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -32,18 +32,11 @@
 
     <!-- Header -->
     <header>
-
         <?php require Views::controllers('site/partials/header.php'); ?>
-
-        <!-- Carousel -->
-        <section class="mt-5 pt-3">
-            <?php require Views::controllers('site/partials/carousel.php'); ?>
-        </section>
-
     </header>
 
     <!-- Slot Main Content -->
-    <main class="container">
+    <main class="container mt-3 py-5">
         <?php require Views::views($slot); ?>
     </main>
 

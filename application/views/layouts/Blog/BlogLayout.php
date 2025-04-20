@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>RAP CMS - Scrap Heap</title>
+    <title>RAP CMS - <?= $title ?? 'Blog' ?></title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -32,18 +32,11 @@
 
     <!-- Header -->
     <header>
-
         <?php require Views::controllers('site/partials/header.php'); ?>
-
-        <!-- Carousel -->
-        <section class="mt-5 pt-3">
-            <?php require Views::controllers('site/partials/carousel.php'); ?>
-        </section>
-
     </header>
 
     <!-- Slot Main Content -->
-    <main class="container">
+    <main class="container mt-3 py-5">
         <?php require Views::views($slot); ?>
     </main>
 
@@ -75,11 +68,16 @@
     <script src="/public/assets/js/main.js"></script>
     <script src="/public/assets/js/main.toggle.theme.js"></script>
 
+    <?php if (isset($title) && $title == 'Create Post'): ?>
+        <!-- Validate Form Create Post -->
+        <script src="/application/library/scripts/jquery-validation-blog-create.js"></script>
+    <?php endif; ?>
+
     <!-- Blueimp File Upload -->
     <!-- <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script> -->
 
-    <!-- Session success -->
     <?php if (isset($_SESSION['success'])): ?>
+        <!-- Session success -->
         <script>
             Swal.fire({
                 position: "top-end",
@@ -91,8 +89,8 @@
         </script>
     <?php endif; ?>
 
-    <!-- Session Error -->
     <?php if (isset($_SESSION['error'])): ?>
+        <!-- Session Error -->
         <script>
             Swal.fire({
                 position: "top-end",

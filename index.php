@@ -1,24 +1,24 @@
 <?php
 
-include 'vendor/autoload.php';
+const BASE_PATH = __DIR__ . '/../';
 
-include 'application/library/filters/Functions.php';
-########################## DDDDDD ###################################
-// dd();
-
-// $params = require 'application/common/config/main.php';
-
-// include_once 'application/common/ado/Connection.php';
-
-// $id = $_GET['id'];
-
-// $query = "SELECT * FROM posts WHERE id = :id";
-
-// $sql = new Connection($params['databases']['db'], $params['secrets']);
-
-// $posts = $sql->query($query, [':id' => $id])->fetch();
-
-// dd($posts);
-
+// Views
+require 'application/controllers/views.php';
+// Functions
+require Views::library('filters/Functions.php');
+// Response
+require Views::library('filters/Response.php');
+// Enums
+require Views::library('filters/enums/EnumStatus.php');
+// Validator
+require Views::library('filters/Validator.php');
+// Conection
+require Views::common('ado/Connection.php');
+// Databases
+$database   = require Views::common('config/databases.php');
+// Connections
+$connection = new Connection($database['databases']['db'], $database['secrets']);
+// Router
+require Views::routers('router.php');
 // Guest Router Content
-include_once 'application/views/layouts/GuestSlot.php';
+require Views::layouts('GuestLayoutSlot.php');

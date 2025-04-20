@@ -13,6 +13,8 @@ class Connection
 {
     protected $instance;
 
+    protected $statement;
+
     private static $system_title = "rap_cms";
     private static $system_email = "alendrelopes@gmail.com";
 
@@ -21,9 +23,10 @@ class Connection
         try {
             $this->instance = new PDO($databases['dns'], $secrets['username'], $secrets['password'], [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
             $this->instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->instance->exec('SET NAMES UTF-8');
+            // $this->instance->exec('SET NAMES UTF-8');
         } catch (PDOException $expeption) {
             mail(self::$system_email, "Error connection", $expeption->getMessage());
+            echo "Error: Conection code: " . $expeption->getCode() . "<br> Mensage: <br>" . $expeption->getMessage();
             // $logger = new Logger('Connection');
             // $logger->pushHandler(new StreamHandler('/application/library/log', Level::Warning));
             // $logger->info("Error: Conection code: " . $expeption->getCode() . " Mensage: " . $expeption->getMessage());
@@ -33,19 +36,32 @@ class Connection
     public function query($query, $params = [])
     {
 
-        $statement = $this->instance->prepare($query);
+        $this->statement = $this->instance->prepare($query);
 
-        $statement->execute($params);
+        $this->statement->execute($params);
 
-        return $statement;
+        return $this;
     }
 
-    // public static function getInstance()
-    // {
-    //     if (!self::$instance) {
-    //         new Connection();
-    //     }
-    //     return self::$instance;
-    // }
+    public function fetch()
+    {
+        return $this->statement->fetch();
+    }
+
+    public function fetchAll()
+    {
+        return $this->statement->fetchAll();
+    }
+
+    public function fetchOrAbort()
+    {
+        $result = $this->fetch();
+
+        if (! $result) {
+            abort(Response::NOT_FOUND);
+        }
+
+        return $result;
+    }
 
 }
