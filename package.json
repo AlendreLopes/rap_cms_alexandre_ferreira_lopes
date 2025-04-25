@@ -25,6 +25,7 @@
     "bootstrap": "^5.3.3",
     "build": "^0.1.4",
     "datatables": "^1.10.18",
+    "fs-extra": "^11.3.0",
     "jquery": "^3.7.1",
     "jquery-mask-plugin": "^1.14.16",
     "jquery-validation": "^1.21.0",

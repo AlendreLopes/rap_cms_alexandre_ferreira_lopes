@@ -2,8 +2,11 @@
 
 class Config
 {
-
-    public static function databases($type): array
+    /**
+     * Summary of databases
+     * @return array{adms: array{charset: string, dns: string, db: array{charset: string, dns: string}, user: array{charset: string, dns: string}}}
+     */
+    public static function databases(): array
     {
         return [
             'db' => [
@@ -20,8 +23,12 @@ class Config
             ],
         ];
     }
-
-    public static function secrets($type): array
+    
+    /**
+     * Summary of secrets
+     * @return array{secrets: array{password: string, username: string}}
+     */
+    public static function secrets(): array
     {
         return [
             'secrets' => [
@@ -32,7 +39,11 @@ class Config
         ];
     }
 
-    public static function services($type): array
+    /**
+     * Summary of services
+     * @return array{aliases: array{@npm: string, components: array, services: array, vendorPath: string}}
+     */
+    public static function services(): array
     {
         return [
             // Sevices

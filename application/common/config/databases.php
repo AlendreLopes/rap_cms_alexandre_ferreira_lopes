@@ -1,8 +1,6 @@
 <?php
 return [
-    //------------------------//
-    // DATABASES
-    //------------------------//
+    // Databases
     'databases' => [
         'db' => [
             'dns' => 'mysql:host=172.18.0.2;dbname=rap_cms',
