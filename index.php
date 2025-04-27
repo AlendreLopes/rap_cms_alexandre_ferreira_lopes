@@ -4,12 +4,22 @@
 require 'spl_autoload.php';
 
 // Functions
-require ViewsController::common('functions.php');
+require ViewsController::common('Functions.php');
 
 // Router
-require ViewsController::routers('router.php');
+$router = new Router();
 
-// Site Router
-require ViewsController::controllers($views, [
-    'views' => $views
-]);
+// Endpoint
+require ViewsController::routersEndpoint('web.php');
+
+// REQUEST_URI
+$get_uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+// REQUEST_METHOD
+$_method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+
+// Router call routes/endpoint
+// $router->route($get_uri, $_method);
+
+// Route list endpoints
+$router->route_list();

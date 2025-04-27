@@ -3,17 +3,17 @@
     "description": "RAP CMS project to college",
     "type": "project",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "App\\": "application/"
-        }
-    },
     "authors": [
         {
             "name": "Alexandre Lopes",
             "email": "alendrelopes@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "application/"
+        }
+    },
     "minimum-stability": "beta",
     "require": {
         "monolog/monolog": "^3.9",

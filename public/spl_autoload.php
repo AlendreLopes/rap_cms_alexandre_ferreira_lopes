@@ -2,7 +2,7 @@
 
 spl_autoload_register(function ($class) {
 
-    $folder = 'App/';
+    $folder = BASE_PATH . 'App/';
     $folders = array(
         $folder,
         $folder . 'Common/',
@@ -20,7 +20,7 @@ spl_autoload_register(function ($class) {
     foreach ($folders as $folder) {
 
         try {
-
+            
             $className = "{$folder}/{$class}.php";
 
             if (file_exists($className)) {
@@ -31,7 +31,7 @@ spl_autoload_register(function ($class) {
         } catch (\Throwable $th) {
             //throw $th;
             throw new Exception("Error Processing Request {$th->getMessage()}");
-
+            
         }
     }
 
