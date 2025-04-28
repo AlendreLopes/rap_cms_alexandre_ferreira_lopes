@@ -1,6 +1,6 @@
 <?php
 
 //Navbar
-require ViewsController::views('Site/Partials/navbar.php', [
+require httpViews('Site/Partials/navbar.php', [
     'outlet' => "This is variable scape view"
 ]);

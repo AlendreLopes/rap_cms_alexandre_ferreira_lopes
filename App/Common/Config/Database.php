@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Common\Config;
+
 class Database
 {
     /**

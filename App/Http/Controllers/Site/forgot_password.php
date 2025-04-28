@@ -4,6 +4,6 @@
 $title = 'Recover password';
 
 // User Access Layout
-require ViewsController::layouts('Users/UserLayoutAccess.php', [
+require httpLayouts('Users/UserLayoutAccess.php', [
     'views' => $views,
 ]);

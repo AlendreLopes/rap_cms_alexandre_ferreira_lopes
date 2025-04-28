@@ -2,12 +2,13 @@
 
 // List products in offer
 
-// $offers = 'Outlet products';
+$offers = 'Outlet products';
 
-// Include partial page of site header
-// require ViewsController::views('Site/Partials/header.php');
+// List products in offer
+$nav = '+ Item';
 
 // Include partial page of site navbar
-require ViewsController::views('Site/Partials/header.php', [
-    'outlet' => 'Outlet products'
+require httpViews('Site/Partials/header.php', [
+    '$outlet' => 'Outlet products',
+    '$navbar' => $nav
 ]);

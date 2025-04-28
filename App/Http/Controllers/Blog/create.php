@@ -1,22 +1,9 @@
 <?php
 
+use App\Common\Validator;
+
 // Seession move to index
 $sessionLoggedIn = 2;
-
-// Response
-require ViewsController::common('Response.php');
-
-// Validator
-require ViewsController::common('Validator.php');
-
-// Conection
-require ViewsController::common('database/Connection.php');
-
-// Databases
-$database = require ViewsController::common('config/main.php');
-
-// Connections
-$connection = new Connection($database['databases']['db'], $database['secrets']);
 
 // Form errors
 $errors = [];
@@ -50,8 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 $title = 'Create Post';
 
 // Blog Layouts
-$create = new BlogController();
-$create->create($views);
-// require ViewsController::layouts('Blog/BlogLayout.php', [
-//     'errors' => $errors
-// ]);
+require httpLayouts('Blog/BlogLayout.php', [
+    'errors' => $errors
+]);

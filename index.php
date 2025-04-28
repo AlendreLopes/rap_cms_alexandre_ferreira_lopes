@@ -1,25 +1,37 @@
 <?php
 
+
+use App\Routers\Router;
+
+// Controllers and Views
+require 'App/ControllersAndViews.php';
+
 // Standard PHP Library
-require 'spl_autoload.php';
+require app('SPLAutoload.php');
 
 // Functions
-require ViewsController::common('Functions.php');
+require app('Functions.php');
+
+// App
+
+// Bootstrap
+require app('Bootstrap.php');
+
 
 // Router
 $router = new Router();
 
 // Endpoint
-require ViewsController::routersEndpoint('web.php');
+require routesEndpoint('web.php');
 
-// REQUEST_URI
-$get_uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+// REQUEST_URI to Endpoint/Routes
+$endpoint = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 // REQUEST_METHOD
-$_method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+$_method  = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-// Router call routes/endpoint
-// $router->route($get_uri, $_method);
+// // Router call routes/endpoint
+$router->route($endpoint, $_method);
 
 // Route list endpoints
-$router->route_list();
+// $router->route_list();

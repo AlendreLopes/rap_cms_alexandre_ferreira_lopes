@@ -11,32 +11,25 @@
     <title>RAP CMS - <?= $title ?? 'Blog' ?></title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Fontawesome-icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 
     <!-- DataTables CSS -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css"
-        integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/node_modules/datatables/media/css/jquery.dataTables.min.css">
 
     <!-- Sweetalert 2 -->
-    <!-- <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css"> -->
+    <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
 
     <!-- Bluimp Css -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.32.0/css/jquery.fileupload.min.css" integrity="sha512-ETNxpham3n+DST8n2xV+sr8Dc2jYUBbQSwm86C5vJL4t2UJQ5cuPeP4pQqzry/9hS6Qlzul49BFDz1oWEC5e2w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="/node_modules/blueimp-file-upload/css/jquery.fileupload.css">
 
     <!-- CSS Main -->
-    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="/public/styles/main.css">
 
     <!-- CSS Main Partial -->
-    <link rel="stylesheet" href="assets/styles/main.partials.css">
+    <link rel="stylesheet" href="public/styles/main.partials.css">
 
 </head>
 
@@ -44,64 +37,50 @@
 
     <!-- Header -->
     <header>
-        <?php require ViewsController::views('Site/Partials/header.php'); ?>
+        <?php require httpViews('Site/Partials/header.php'); ?>
     </header>
 
     <!-- Slot Main Content -->
     <main class="container mt-3 py-5">
-        <?php require ViewsController::views($views); ?>
+        <?php require httpViews($views); ?>
     </main>
 
     <!-- Footer -->
     <footer class="w-100 mt-5">
         <!-- Footer Upper -->
-        <?php require ViewsController::views('Site/Partials/footer.upper.php'); ?>
+        <?php require httpViews('Site/Partials/footer.upper.php'); ?>
         <!-- Footer Lower -->
-        <?php require ViewsController::views('Site/Partials/footer.lower.php'); ?>
+        <?php require httpViews('Site/Partials/footer.lower.php'); ?>
     </footer>
 
     <!-- Scripts -->
+
     <!-- Jquery JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 
     <!-- DataTables JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
-        integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-        crossorigin="anonymous"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Sweet alert js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
-        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <!-- Fontawesome icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
-        integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
     <!-- Main scripts -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/main.toggle.theme.js"></script>
+    <script src="/public/js/main.js"></script>
 
-    <?php if ($title == 'Create Post'): ?>
-        <!-- Validate Form Create Post -->
-        <script src="/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script>$("#blogCreateForm").validate();</script>
-        <!-- <script src="assets/js/validation/jquery-validation-blog-create.js"></script> -->
-    <?php endif; ?>
+    <!-- Main scripts -->
+    <script src="/public/js/main.toggle.theme.js"></script>
 
     <!-- Blueimp File Upload -->
     <!-- <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script> -->
 
+    <!-- Session success -->
     <?php if (isset($_SESSION['success'])): ?>
-        <!-- Session success -->
         <script>
             Swal.fire({
                 position: "top-end",
@@ -113,8 +92,8 @@
         </script>
     <?php endif; ?>
 
+    <!-- Session Error -->
     <?php if (isset($_SESSION['error'])): ?>
-        <!-- Session Error -->
         <script>
             Swal.fire({
                 position: "top-end",

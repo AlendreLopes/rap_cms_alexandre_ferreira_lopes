@@ -1,11 +1,9 @@
 <?php
 
-// Databases
-$database = Database::databases();
-$secrets = Database::secrets();
+use App\App;
+use App\Database\Connection;
 
-// Connection
-$connection = new Connection($database['db'], $secrets['secrets']);
+$connection = App::resolver(Connection::class);
 
 $query = "SELECT * FROM posts";
 
@@ -15,7 +13,7 @@ $posts = $connection->query($query)->fetchAll();
 $title = 'Blog';
 
 // Guest Layouts
-require ViewsController::layouts('Blog/BlogLayout.php', [
+require httpLayouts('Blog/BlogLayout.php', [
     'views' => $views,
     'posts' => $posts
 ]);

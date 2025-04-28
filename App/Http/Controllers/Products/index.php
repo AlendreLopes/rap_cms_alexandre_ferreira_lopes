@@ -1,6 +1,16 @@
 <?php
 
+use App\App;
+use App\Database\Connection;
+
+$connection = App::resolver(Connection::class);
+
+$query = "SELECT * FROM products";
+
+$products = $connection->query($query)->fetchAll();
+
 // Products Layout
-require ViewsController::layouts('Products/ProductsLayout.php', [
+require httpLayouts('Products/ProductsLayout.php', [
     'views' => $views,
+    'products' => $products
 ]);

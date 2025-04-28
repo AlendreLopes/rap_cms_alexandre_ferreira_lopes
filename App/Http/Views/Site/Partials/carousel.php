@@ -2,7 +2,7 @@
 
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="assets/images/products/hat/bone-chase-white_front.webp"
+            <img src="/public/assets/images/products/hat/bone-chase-white_front.webp"
                 class="img-fluid rounded mx-auto d-block h-100"alt="Hat">
             <div class="container">
                 <div class="carousel-caption text-start">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="assets/images/products/sneakers/CHASE_JAN2533571.webp" 
+            <img src="/public/assets/images/products/sneakers/CHASE_JAN2533571.webp" 
                 class="img-fluid rounded mx-auto d-block h-100"
                alt="Regatta">
             <div class="container">
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="assets/images/products/regata/regata-see-branco_front.webp"
+            <img src="/public/assets/images/products/regata/regata-see-branco_front.webp"
                 class="img-fluid rounded mx-auto d-block h-100"alt="Regatta">
             <div class="container align-items-end">
                 <div class="carousel-caption text-start">

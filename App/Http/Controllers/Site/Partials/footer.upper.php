@@ -1,4 +1,6 @@
 <?php
 
+
+
 // Include partial page of site footer
-require ViewsController::views('Site/Partials/footer.upper.php');
+require httpViews('Site/Partials/footer.upper.php');

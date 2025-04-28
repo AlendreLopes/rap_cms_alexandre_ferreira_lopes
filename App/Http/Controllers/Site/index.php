@@ -1,6 +1,6 @@
 <?php
 
 // Guest Layouts
-require ViewsController::layouts('GuestLayout.php', [
+require httpLayouts('GuestLayout.php', [
     'views' => $views,
 ]);
