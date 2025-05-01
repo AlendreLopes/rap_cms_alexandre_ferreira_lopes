@@ -16,4 +16,6 @@ $container->bind('App\Database\Connection', function () {
 
 });
 
+// $connection = $container->resolver(Connection::class);
+
 App::setContainer($container);

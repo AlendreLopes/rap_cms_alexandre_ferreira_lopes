@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/public/styles/main.css">
 
     <!-- CSS Main Partial -->
-    <link rel="stylesheet" href="public/styles/main.partials.css">
+    <link rel="stylesheet" href="/public/styles/main.partials.css">
 
 </head>
 
@@ -75,6 +75,12 @@
 
     <!-- Main scripts -->
     <script src="/public/js/main.toggle.theme.js"></script>
+
+    <?php if($title == 'Create Post'): ?>
+        <!-- Validate Form -->
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/jquery-validation-blog-create.js"></script>
+    <?php endif; ?>
 
     <!-- Blueimp File Upload -->
     <!-- <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script> -->

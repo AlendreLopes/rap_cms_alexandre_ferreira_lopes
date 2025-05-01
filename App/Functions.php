@@ -1,5 +1,8 @@
 <?php
 
+use App\Validations\Response;
+
+
 /**
  * Functions to App
  */
@@ -61,13 +64,36 @@ function authorize($condition, $status = Response::FORBIDDEN)
  */
 function abort($errorCode): string
 {
-    
+
     http_response_code($errorCode);
 
     $views = "{$errorCode}.php";
 
     require httpControllers("Errors/{$errorCode}.php");
 
-    die();
+    exit();
 
+}
+
+/**
+ * Summary of redirect
+ * @param mixed $path
+ * @return never
+ */
+function redirect($path)
+{
+    header("location: {$path}");
+
+    exit();
+}
+
+/**
+ * Summary of old
+ * @param mixed $key
+ * @param mixed $default
+ * @return void
+ */
+function old($key, $default = '')
+{
+    return App\Sessions::get('old')[$key] ?? $default;
 }

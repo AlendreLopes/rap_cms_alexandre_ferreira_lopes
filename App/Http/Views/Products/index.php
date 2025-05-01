@@ -4,11 +4,11 @@
 
         <h1 class="display-4 fst-italic">Ours Products</h1>
 
-        <p class="lead mb-0 text-end">
-
-            <a href="/products/create" class="text-info-emphasis fw-bold">New product</a>
-
-        </p>
+        <?php if (isset($_SESSION['rap_cms'])): ?>
+            <p class="lead mb-0 text-end">
+                <a href="/products/create" class="text-info-emphasis fw-bold">New product</a>
+            </p>
+        <?php endif; ?>
 
     </div>
 

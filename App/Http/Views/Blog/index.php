@@ -5,11 +5,13 @@
         <div class="col-lg-12 px-0">
 
             <h1 class="display-4 fst-italic">Our blog</h1>
-
+            
+            <?php if (isset($_SESSION['rap_cms'])): ?>
             <p class="lead mb-0 text-end">
                 <a href="/blog/create" class="text-info-emphasis fw-bold">New post</a>
             </p>
-            
+            <?php endif; ?>
+
         </div>
 
     </div>
@@ -68,7 +70,7 @@
         <?php endif; ?>
 
     </div>
-    
+
 </div>
 
 <div class="row g-5">

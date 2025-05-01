@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Exception;
+
 class Container
 {
     protected $bindings = [];
@@ -11,12 +13,12 @@ class Container
         $this->bindings[$key] = $resolver;
     }
 
-    public function resolver($key)
+    public function resolve($key)
     {
 
         if (!array_key_exists($key, $this->bindings)) {
 
-            throw new \Exception("Error Processing Request code: {$key}");
+            throw new Exception("Error Processing Request code: {$key}");
 
         }
 

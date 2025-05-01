@@ -3,7 +3,7 @@
 use App\App;
 use App\Database\Connection;
 
-$connection = App::resolver(Connection::class);
+$connection = App::resolve(Connection::class);
 
 $query = "SELECT * FROM products";
 

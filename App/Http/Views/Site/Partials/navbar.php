@@ -25,6 +25,7 @@
 
         <a class="navbar-brand col-lg-3" href="/" title="Gift Shopping">
             <i class="fa-solid fa-gift" style="font-size:30px; color:blueviolet;"></i>
+            Hello, <?= $_SESSION['rap_cms']['userName'] ?? 'guest' ?>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -65,53 +66,48 @@
             <div class="d-lg-flex col-lg-4 justify-content-lg-end">
                 <!-- Search -->
                 <form role="search" class="me-1">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 180px">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                        style="width: 180px">
                 </form>
-                <?php
-                if(isset($_SESSION['user_loggin']))
-                {
-                    ?>
+                <?php if (isset($_SESSION['rap_cms'])): ?>
                     <!-- User Loggin -->
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="dropdown text-end mx-2">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu text-small dropdown-menu-end shadow">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="<?= $_SESSION['rap_cms']['dashboard']['index'] ?>">Dashboard</a></li>
                             <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="<?= $_SESSION['rap_cms']['dashboard']['profile'] ?>">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li>
+                                <form action="<?= $_SESSION['rap_cms']['dashboard']['logout'] ?>" method="POST">
+                                    <input type="hidden" name="logout">
+                                    <button class="dropdown-item" href="<?= $_SESSION['rap_cms']['dashboard']['logout'] ?>">Sign out</button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
-                    <?php
-                } else {
-                    ?>
-                    <!-- Login -->
-                    <a href="/login" class="d-flex flex align-items-center btn btn-outline-info me-1">
-                        <i class="fa fa-user" aria-hidden="true"></i> 
-                        <!-- <i class="fa-solid fa-user-tie"></i>  -->
-                        <!-- <i class="fa-solid fa-id-card"></i> -->
-                        <!-- <i class="fa-solid fa-id-badge"></i> -->
-                        &nbsp; 
-                        Login
-                    </a>
-                    <!-- Register -->
-                    <a href="/register" class="btn btn-outline-success me-1">
-                        <!-- <i class="fa fa-ship" aria-hidden="true"></i>  -->
-                        <!-- <i class="fa-solid fa-hand-holding-heart"></i> -->
-                        <i class="fa-solid fa-user-plus"></i> 
-                        Register
-                    </a>
-                    <?php
-                }
-                ?>
+                    <?php else: ?>
+                        <div class="d-flex flex justify-content-lg-center">
+                            <!-- Register -->
+                            <a href="/register" class="btn btn-outline-success mx-1">
+                                <i class="fa-solid fa-user-plus"></i> Register
+                            </a>
+                            <!-- Login -->
+                            <a href="/login" class="align-items-center btn btn-outline-info mx-1">
+                                <i class="fa fa-user" aria-hidden="true"></i> Login
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 <!-- Toggle theme -->
                 <div class="dropdown me-1 bd-mode-toggle">
 
-                    <button class="btn btn-bd-primary dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+                    <button class="btn btn-bd-primary dropdown-toggle d-flex align-items-center" id="bd-theme"
+                        type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
                         <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
                             <use href="#circle-half"></use>
                         </svg>
@@ -120,7 +116,8 @@
 
                     <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
                         <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                            <button type="button" class="dropdown-item d-flex align-items-center"
+                                data-bs-theme-value="light" aria-pressed="false">
                                 <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                     <use href="#sun-fill"></use>
                                 </svg>
@@ -131,7 +128,8 @@
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                            <button type="button" class="dropdown-item d-flex align-items-center"
+                                data-bs-theme-value="dark" aria-pressed="false">
                                 <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                     <use href="#moon-stars-fill"></use>
                                 </svg>
@@ -142,7 +140,8 @@
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                            <button type="button" class="dropdown-item d-flex align-items-center active"
+                                data-bs-theme-value="auto" aria-pressed="true">
                                 <svg class="bi me-2 opacity-50" width="1em" height="1em">
                                     <use href="#circle-half"></use>
                                 </svg>

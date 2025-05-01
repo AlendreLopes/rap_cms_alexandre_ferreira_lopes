@@ -60,6 +60,24 @@ function httpLayouts($path, $attributes = [])
 }
 
 /**
+ * Summary of dashboard
+ * 
+ *  * Show Dashboard of app
+ * 
+ * @param mixed $path
+ * @param mixed $attributes
+ * @return string
+ */
+function httpDashboard($path, $attributes = [])
+{
+
+    extract($attributes);
+
+    return "App/Http/{$path}";
+
+}
+
+/**
  * Summary of views
  * 
  *  * Show views

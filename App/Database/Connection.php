@@ -62,7 +62,7 @@ class Connection
     {
         $result = $this->fetch();
 
-        if (! $result) {
+        if (!$result) {
             abort(Response::NOT_FOUND);
         }
 

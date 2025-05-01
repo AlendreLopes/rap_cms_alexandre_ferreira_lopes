@@ -2,15 +2,21 @@
 
 namespace App\Routers;
 
-use App\Common\Response;
+use App\Middleware\Middlware;
+use App\Validations\Response;
 
 class Router
 {
-    protected $router = [];
+    protected $routes = [];
 
     public function action(string $uri, string $controller, string $method)
     {
-        $this->router[] = compact('uri', 'controller', 'method');
+        $this->routes[] = [
+            'uri' => $uri,
+            'controller' => $controller,
+            'method' => $method,
+            'middleware' => null
+        ];
         return $this;
     }
 
@@ -21,7 +27,7 @@ class Router
 
     public function post(string $uri, string $controller)
     {
-        return $this->action( $uri, $controller, 'POST');
+        return $this->action($uri, $controller, 'POST');
     }
 
     public function patch(string $uri, string $controller)
@@ -34,24 +40,29 @@ class Router
         return $this->action($uri, $controller, 'PUT');
     }
 
-    public function store(string $uri, string $controller)
-    {
-        return $this->action($uri, $controller, 'STORE');
-    }
     public function delete(string $uri, string $controller)
     {
         return $this->action($uri, $controller, 'DELETE');
     }
 
+    public function only($key)
+    {
+        $this->routes[(array_key_last($this->routes))]['middleware'] = $key;
+
+        return $this;
+    }
 
     public function route($uri, $method)
     {
-        foreach ($this->router as $route) {
+        foreach ($this->routes as $route) {
 
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
-                
-                // $GLOBALS['views'] = $route['controller'];
+
+                // Global var views used and all Layouts
                 $views = $route['controller'];
+                
+                Middlware::resolver($route['middleware']);
+
                 return require httpControllers($route['controller'], ['views' => $route['controller']]);
 
             }
@@ -66,13 +77,19 @@ class Router
     {
         echo "Route list:<br>";
         echo "<pre>";
-        foreach ($this->router as $route) {
-            $routeMethod = "{$route['method']}";
+        foreach ($this->routes as $route) {
+            $routeMiddleware = "{$route['middleware']}";
+            $routeMetho = "{$route['method']}";
             $routeURI = "{$route['uri']}";
             $routeController = "{$route['controller']}<br>";
-            echo str_pad($routeMethod, 20, '.', STR_PAD_RIGHT) . str_pad($routeURI, 50, '.', STR_PAD_RIGHT) . str_pad($routeController, 100, ".", STR_PAD_LEFT);
+            // echo str_pad($routeMetho, 10, '.', STR_PAD_RIGHT) . str_pad($routeMiddleware, 10, '.', STR_PAD_RIGHT) . str_pad($routeURI, 50, '.', STR_PAD_RIGHT) . str_pad($routeController, 100, ".", STR_PAD_LEFT);
+            echo str_pad($routeMetho, 10, '.', STR_PAD_RIGHT) . str_pad($routeURI, 50, '.', STR_PAD_RIGHT) . str_pad($routeController, 100, ".", STR_PAD_LEFT);
         }
         echo "<pre>";
     }
 
+    public function previousUrl()
+    {
+        return $_SERVER['HTTP_REFERER'];
+    }
 }

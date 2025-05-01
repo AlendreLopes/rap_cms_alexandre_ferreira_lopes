@@ -1,13 +1,38 @@
-$(document).ready(function () {
+$(function () {
     
+    // Show password on Login Register
+    $('#eyeSlash').click(function () {
+
+        if ($(this).hasClass('fa-eye-slash')) {
+
+            $(this).removeClass('fa-eye-slash');
+
+            $(this).addClass('fa-eye');
+
+            $('#password').attr('type', 'text');
+
+            $('#password_confirm').attr('type', 'text');
+
+        } else {
+
+            $(this).removeClass('fa-eye');
+
+            $(this).addClass('fa-eye-slash');
+
+            $('#password').attr('type', 'password');
+
+            $('#password_confirm').attr('type', 'text');
+        }
+    });
+
     // Blueimp Upload File
     // $('#fileupload').fileupload();
 
-    // Data tables
-    $('.table').DataTable();
+    // // Data tables
+    // $('.table').DataTable();
 
     //display the summernote drop down menu
-    $('.dropdown-toggle').dropdown();
+    // $('.dropdown-toggle').dropdown();
 
     // Delete Imtem
     function deleteItem(id) {

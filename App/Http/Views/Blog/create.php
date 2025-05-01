@@ -6,20 +6,23 @@
 
             <h1 class="display-4 fst-italic">Blog Create</h1>
 
-            <form id="blogCreateForm" method="post" class="row g-3 needs-validation">
+            <form id="blogCreateForm" method="post" action="/blog/store" class="row g-3 needs-validation">
+
+                <input type="hidden" name="_method" value="PUT">
 
                 <div class="col-md-12">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" minlength="5" maxlength="50" value="<?= $_POST['title'] ?? '' ?>" required>
-                    <?php if (isset($error['title'])): ?>
-                        <?= $error['title'] ?>
-                    <?php endif; ?>
+                    <input type="text" class="form-control" id="title" name="title" minlength="5" maxlength="50"
+                        value="<?= $postTitle ?>" required>
                 </div>
+                <?php if (isset($error['title'])): ?>
+                    <?= $error['title'] ?>
+                <?php endif; ?>
 
                 <div class="col-md-12">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" name="description" id="description" cols="30" rows="10" minlength="50" maxlength="500" required>
-                        <?= $_POST['description'] ?? '' ?></textarea>
+                    <textarea class="form-control" name="description" id="description" cols="30" rows="10"
+                        minlength="50" maxlength="1000" required><?= $bodyTitle ?></textarea>
                 </div>
                 <?php if (isset($error['description'])): ?>
                     <?= $error['description'] ?>
@@ -33,7 +36,8 @@
                     <?= $error['status'] ?>
                 <?php endif; ?>
 
-                <div class="col-12">
+                <div class="col-12 d-flex flex justify-content-end">
+                    <a href="/blog" class="btn btn-secondary mx-1" type="submit">Cancel</a>
                     <button class="btn btn-primary" type="submit">Create Post</button>
                 </div>
 

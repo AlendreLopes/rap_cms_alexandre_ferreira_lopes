@@ -33,7 +33,7 @@
 
 </head>
 
-<body>
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
 
     <!-- Header -->
     <header>
@@ -41,14 +41,12 @@
     </header>
 
     <!-- Slot Main Content -->
-    <main class="container mt-3 py-5">
-        <?php require httpViews($views); ?>
+    <main class="mx-auto w-100 mt-3 py-5">
+        <?php require httpDashboard($views); ?>
     </main>
 
     <!-- Footer -->
-    <footer class="w-100 mt-5">
-        <!-- Footer Upper -->
-        <?php require httpControllers('Site/Partials/footer.upper.php'); ?>
+    <footer class="fixed-bottom w-100 mt-5">
         <!-- Footer Lower -->
         <?php require httpControllers('Site/Partials/footer.lower.php'); ?>
     </footer>
