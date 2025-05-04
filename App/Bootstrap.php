@@ -1,13 +1,12 @@
 <?php
 
 use App\App;
+use App\Common\Database\Connection;
 use App\Container;
-use App\Database\Connection;
-
 
 $container = new Container();
 
-$container->bind('App\Database\Connection', function () {
+$container->bind(Connection::class, function () {
 
         // Databases
         $database = require appCommon('Config/main.php');
@@ -16,6 +15,8 @@ $container->bind('App\Database\Connection', function () {
 
 });
 
-// $connection = $container->resolver(Connection::class);
+// $connection = $container->resolve(Connection::class);
+
+// dd($connection);
 
 App::setContainer($container);

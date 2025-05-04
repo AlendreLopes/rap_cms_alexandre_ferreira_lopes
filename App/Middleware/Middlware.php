@@ -5,9 +5,10 @@ namespace App\Middleware;
 class Middlware
 {
     public const MAP = [
-        'guest' => Guest::class,
+        'adm' => Adm::class,
         'auth'  => Auth::class,
-        'email' => Email::class
+        'email' => Email::class,
+        'guest' => Guest::class
     ];
 
     public static function resolver($key)

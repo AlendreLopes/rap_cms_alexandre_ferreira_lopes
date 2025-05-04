@@ -1,0 +1,19 @@
+<?php
+
+use App\Common\Sessions;
+
+// Administratos
+// 
+// Title
+$title = 'Register';
+// 
+// Errors
+$errors = [];
+$errors['errors'] = Sessions::get('errors');
+$errors['oldData'] = Sessions::get('oldData');
+// 
+// User Access Layout
+require httpLayouts('Admin/AdminLayoutAccess.php', [
+    'views' => $views,
+]);
+

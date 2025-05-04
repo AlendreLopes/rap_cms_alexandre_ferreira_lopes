@@ -76,12 +76,58 @@
     <!-- Main scripts -->
     <script src="/public/js/main.toggle.theme.js"></script>
 
-    <?php if($title == 'Create Post'): ?>
-        <!-- Validate Form -->
-        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-        <script src="/public/js/validations/jquery-validation-blog-create.js"></script>
+    <?php if(isset($title) && ($title == ('Create Post')) || ($title == ('Edit Post'))): ?>
+    <!-- Validate Form -->
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/public/js/validations/blog/jquery-validation-blog-create.js"></script>
+    <script>
+        // $('#blogForm').submit(function (e) {
+        //     e.preventDefault();
+        //     let formData = $(this);
+        //     // alert(formData);
+        //     let formCreate = blogCreate();
+        // });
+
+        // function blogCreate(dataForm) {
+        //     $.ajax({
+        //         type: "POST",
+        //         data: dataForm,
+        //         url: "/blog/store",
+        //         async:false
+        //     }).then(success, error);
+        // }
+
+        // function success(data) { 
+        //     console.log(data);
+        //  }
+
+        // function error(data) {
+        //     console.log(data);
+        // }
+    </script>
     <?php endif; ?>
 
+    <?php if(isset($title) && $title == 'Show Post'): ?>
+    <!-- Validate Form -->
+    <script>
+        function deleteItem(id) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(id).submit();
+                }
+            });
+        }
+    </script>
+    <?php endif; ?>
+    
     <!-- Blueimp File Upload -->
     <!-- <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script> -->
 
@@ -91,9 +137,9 @@
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "{{ session('success') }}",
+                title: "<?= $_SESSION['success'] ?>",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             });
         </script>
     <?php endif; ?>
@@ -104,9 +150,9 @@
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title: "{{ session('error') }}",
+                title: "<?= $_SESSION['error'] ?>",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             });
         </script>
     <?php endif; ?>

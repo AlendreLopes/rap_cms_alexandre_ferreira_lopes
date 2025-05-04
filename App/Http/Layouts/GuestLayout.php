@@ -83,18 +83,15 @@
     <!-- Main scripts -->
     <script src="/public/js/main.toggle.theme.js"></script>
 
-    <!-- Blueimp File Upload -->
-    <!-- <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script> -->
-
     <!-- Session success -->
     <?php if (isset($_SESSION['success'])): ?>
         <script>
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "{{ session('success') }}",
+                title: "<?= $_SESSION['success'] ?>",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             });
         </script>
     <?php endif; ?>
@@ -105,9 +102,9 @@
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title: "{{ session('error') }}",
+                title: "<?= $_SESSION['error'] ?>",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             });
         </script>
     <?php endif; ?>

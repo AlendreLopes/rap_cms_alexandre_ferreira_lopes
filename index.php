@@ -1,19 +1,19 @@
 <?php
 
-use App\Sessions;
+use App\Common\Sessions;
+use App\Common\Validations\ValidationException;
 use App\Routers\Router;
-use App\Validations\ValidationException;
 
 session_start();
 
 // Controllers and Views
-require 'App/ControllersAndViews.php';
+require 'App/Http/ControllersAndViews.php';
+
+// Functions
+require appCommon('Functions.php');
 
 // Standard PHP Library
 require 'vendor/autoload.php';
-
-// Functions
-require app('Functions.php');
 
 // Bootstrap
 require app('Bootstrap.php');
@@ -28,18 +28,25 @@ require routesEndpoint('web.php');
 $endpoint = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 // REQUEST_METHOD
-$_method  = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+$_method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 // Router call routes/endpoint
+// $router->route($endpoint, $_method);
 try {
 
     $router->route($endpoint, $_method);
+    if (isset($_SESSION['success'])) {
+        unset($_SESSION['success']);
+    }
+    if (isset($_SESSION['error'])) {
+        unset($_SESSION['error']);
+    }
 
 } catch (ValidationException $exception) {
 
     Sessions::flash('errors', $exception->errors);
     Sessions::flash('oldData', $exception->oldData);
-    
+
     return redirect($router->previousUrl());
 
 }

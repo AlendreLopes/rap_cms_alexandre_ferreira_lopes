@@ -6,17 +6,15 @@
 
             <h1 class="display-4 fst-italic">Blog Create</h1>
 
-            <form id="blogCreateForm" method="post" action="/blog/store" class="row g-3 needs-validation">
-
-                <input type="hidden" name="_method" value="PUT">
-
+            <form id="blogForm" method="post" action="/blog/store" class="row g-3 needs-validation">
+                
                 <div class="col-md-12">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name="title" minlength="5" maxlength="50"
                         value="<?= $postTitle ?>" required>
                 </div>
-                <?php if (isset($error['title'])): ?>
-                    <?= $error['title'] ?>
+                <?php if (isset($_SESSION['errors']['title'])): ?>
+                    <?= $_SESSION['errors']['title'] ?>
                 <?php endif; ?>
 
                 <div class="col-md-12">

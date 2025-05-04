@@ -1,6 +1,6 @@
 $().ready(function () {
     let text;
-    $("#blogCreateForm").validate({
+    $("#blogForm").validate({
         rules: {
             title: {
                 required: true,

@@ -1,46 +1,60 @@
 <?php
 
-use App\App;
-use App\Common\Validator;
-use App\Database\Connection;
+use App\Http\Controllers\BlogController;
+use App\Http\Models\Blog;
 
-$connection = App::resolve(Connection::class);
+// Validate value form create blog
+$form = Blog::validate($attributes = [
+    'title' => $_POST['title'],
+    'description' => $_POST['description'],
+]);
 
-// Seession move to index
-$sessionLoggedIn = 2;
+$store = (new BlogController)->store(
+    $_SESSION['rap_cms']['userId'],
+    $attributes['title'],
+    $attributes['description'],
+    $_POST['status'] ?? 'Draft',
+);
 
-// Form errors
-$errors = [];
+if (!$store) {
 
-
-if (!Validator::string($_POST['title'], 5, 50)) {
-    $errors['title'] = "The title must be at min 5 and max 50 characteres";
+    $form->hasErrors('errors', 'Errors thowed!')->throw();
+    
 }
 
-if (!Validator::string($_POST['description'], 50, 1000)) {
-    $errors['description'] = "The description of post no more than 1000 characters is required.";
-}
+redirect('/blog');
 
-if (!empty($errors)) {
-    // Title
-    $title = 'Create Post';
+// $result = array();
 
-    // Blog Layouts
-    require httpLayouts('Blog/BlogLayout.php', [
-        'errors' => $errors
-    ]);
-}
+// $errors = [];
+
+// if (!Validation::string($attributes['title'], 5, 50)) {
+//     $errors['title'] = 'Title min 5 and max 50 chars.';
+// }
+
+// if (!Validation::string($attributes['description'], 50, 1500)) {
+//     $errors['description'] = 'Description min 50 and max 1000 chars.';
+// }
+
+// $store = (new BlogController)->store(
+//     $_SESSION['rap_cms']['userId'], 
+//     $attributes['title'],
+//     $attributes['description'],
+//     $_POST['status'] ?? 'Draft',
+// );
 
 
-if (empty($errors)) {
-    $connection->query("INSERT INTO posts 
-        (user_id, title, description, created_at)
-        VALUES
-        (:user_id, :title, :description, :created_at)
-        ", [
-        'user_id' => $sessionLoggedIn,
-        'title' => htmlspecialchars($_POST['title']),
-        'description' => htmlspecialchars($_POST['description']),
-        'created_at' => date("Y-m-d H:i:s")
-    ]);
-}
+// if (!$store) {
+
+//     // $form->hasErrors('errors', 'Errors thowed!')->throw();
+//     $result["errors"] = false;
+//     $result['message'] = $form->hasErrors('errors', 'Errors thowed!');
+//     // return false;
+
+// }
+
+// $result["success"] = true;
+// $result["message"] = "Post created with success!";
+// // 
+// // return true;
+// echo json_encode($result);

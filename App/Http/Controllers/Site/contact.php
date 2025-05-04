@@ -1,7 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteController;
 
 // Guest Layouts
-require httpLayouts('GuestLayout.php', [
-    'views' => $views,
-]);
+$site = (new SiteController)->contact($views);

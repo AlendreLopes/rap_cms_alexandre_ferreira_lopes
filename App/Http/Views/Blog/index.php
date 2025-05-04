@@ -5,11 +5,11 @@
         <div class="col-lg-12 px-0">
 
             <h1 class="display-4 fst-italic">Our blog</h1>
-            
+
             <?php if (isset($_SESSION['rap_cms'])): ?>
-            <p class="lead mb-0 text-end">
-                <a href="/blog/create" class="text-info-emphasis fw-bold">New post</a>
-            </p>
+                <p class="lead mb-0 text-end">
+                    <a href="/blog/create" class="text-info-emphasis fw-bold">New post</a>
+                </p>
             <?php endif; ?>
 
         </div>
@@ -34,19 +34,37 @@
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 
                         <div class="col p-4 d-flex flex-column position-static">
+
                             <strong
-                                class="d-inline-block mb-2 <?= ((htmlspecialchars($post['id']) % 2) == 0) ? 'text-success-emphasis' : 'text-primary-emphasis'; ?>"><?= $post['title'] ?></strong>
+                                class="d-inline-block mb-2 <?= ((htmlspecialchars($post['id']) % 2) == 0) ? 'text-success-emphasis' : 'text-primary-emphasis'; ?>">
+                                <?= $post['title'] ?>
+                            </strong>
+
                             <h3 class="mb-0"><?= htmlspecialchars($post['title']) ?></h3>
-                            <div class="mb-1 text-body-secondary">Nov 12</div>
+
+                            <div class="mb-1 text-body-secondary">
+                                <?php if (empty($post['updated_at'])): ?>
+                                    Created <?= substr($post['created_at'], 0, 10) ?>
+                                <?php else: ?>
+                                    Updated <?= substr($post['updated_at'], 0, 10) ?>
+                                <?php endif; ?>
+                            </div>
+
                             <p class="card-text mb-auto">
-                                <?= substr(htmlspecialchars($post['description']), 0, 15) ?>
+                                <?= substr(htmlspecialchars($post['description']), 0, 45) ?>
                             </p>
+
+                            <p class="card-text mb-auto text-end">
+                                <?= htmlspecialchars($post['status']) ?>
+                            </p>
+
                             <a href="/blog/show?id=<?= htmlspecialchars($post['id']) ?>"
-                                class="<?= ((htmlspecialchars($post['id']) % 2) == 0) ? 'link-success' : 'link-primary'; ?> link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                                class="<?= ((htmlspecialchars($post['id']) % 2) == 0) ? 'link-success' : 'link-primary'; ?> link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-end">
                                 <i class="fa fa-list" aria-hidden="true"></i>
                                 Continue reading
                                 <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
                             </a>
+
                         </div>
 
                         <div class="col-auto d-none d-lg-block">

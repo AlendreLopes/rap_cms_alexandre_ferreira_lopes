@@ -2,8 +2,8 @@
 
 namespace App\Routers;
 
+use App\Common\Validations\Response;
 use App\Middleware\Middlware;
-use App\Validations\Response;
 
 class Router
 {
