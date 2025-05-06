@@ -64,11 +64,13 @@
             </ul>
 
             <div class="d-lg-flex col-lg-4 justify-content-lg-end">
+
                 <!-- Search -->
                 <form role="search" class="me-1">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search"
                         style="width: 180px">
                 </form>
+                <!-- Logged In -->
                 <?php if (isset($_SESSION['rap_cms'])): ?>
                     <!-- User Loggin -->
                     <div class="dropdown text-end mx-2">
@@ -91,7 +93,7 @@
                             </li>
                         </ul>
                     </div>
-                    <?php else: ?>
+                <?php else: ?>
                         <div class="d-flex flex justify-content-lg-center">
                             <!-- Register -->
                             <a href="/register" class="btn btn-outline-success mx-1">
@@ -99,10 +101,10 @@
                             </a>
                             <!-- Login -->
                             <a href="/login" class="align-items-center btn btn-outline-info mx-1">
-                                <i class="fa fa-user" aria-hidden="true"></i> Login
+                                <i class="fa fa-sign-in" aria-hidden="true"></i> Login
                             </a>
                         </div>
-                    <?php endif; ?>
+                <?php endif; ?>
                 <!-- Toggle theme -->
                 <div class="dropdown me-1 bd-mode-toggle">
 

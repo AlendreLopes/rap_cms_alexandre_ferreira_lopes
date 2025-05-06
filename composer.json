@@ -19,7 +19,8 @@
         "monolog/monolog": "^3.9",
         "joshtronic/php-loremipsum": "dev-master",
         "fakerphp/faker": "^1.24",
-        "aws/aws-sdk-php": "^3.343"
+        "aws/aws-sdk-php": "^3.343",
+        "phpmailer/phpmailer": "^6.10"
     },
     "require-dev": {
         "pestphp/pest": "^3.8"

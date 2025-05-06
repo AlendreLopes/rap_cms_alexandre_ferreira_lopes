@@ -9,7 +9,7 @@ class Auth
 
         if (!isset($_SESSION['rap_cms'])) {
 
-            header('location: /');
+            header('location: /login');
 
             exit();
 

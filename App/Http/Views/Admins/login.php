@@ -8,7 +8,11 @@
 
     <form id="userLoginForm" action="/admins/login/store" method="POST">
 
-        <h1 class="h3 mb-3 fw-normal text-center">ADM Sign in</h1>
+        <h1 class="h3 mb-3 fw-normal text-center">
+            Administrators
+            <br>
+            Sign in
+        </h1>
 
         <div class="form-control mb-2">
             <label class="form-label" for="email">Email address</label>
@@ -18,7 +22,7 @@
 
         <?php if ($errors['errors']): ?>
             <div class="col-sm-12 text-center text-danger m-2">
-                <?= $errors['errors']['errors'] ?>
+                <?= $errors['errors']['email'] ?>
             </div>
         <?php endif; ?>
 
@@ -35,7 +39,7 @@
 
         <div class="form-check text-end my-3">
             <a href="/admins/register">
-                Allread registred Sign Up!
+                Already registred Sign Up!
             </a>
         </div>
 

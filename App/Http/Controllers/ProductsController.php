@@ -1,28 +1,62 @@
 <?php
 
+namespace App\Http\Controllers;
+
+use App\App;
+use App\Http\Models\Products;
+
+
 class ProductsController
 {
+    protected $container;
+
+    public function __construct()
+    {
+        $this->container = new Products();
+    }
+
     public function index($views)
     {
-        require ViewsController::layouts('Products/ProductsLayout.php', [
-            'views' => $views,
-        ]);
+        $products = $this->products();
+
+        return require httpLayouts('Products/ProductsLayout.php');
     }
 
     public function update($id)
     {
-        $model = new Site();
-        // $model->store($id);
-        echo $model->store($id);
+        // $model = new Site();
+        // // $model->store($id);
+        // echo $model->store($id);
     }
 
-    public function login()
+    public function products ()
     {
-        $user = '';
+
+        return $this->container->products();
+        
+        // $connection = App::resolve(Connection::class);
+
+        // $query = "SELECT * FROM products";
+
+        // $products = $connection->query($query)->fetchAll();
+
+        // return $products;
+
+
     }
 
-    public function logout()
+    public function details($views, $id)
     {
-        $user = '';
+
+        $details = $this->container->details($id);
+
+        // $products = App::resolve(Products::class);
+
+        // $details = $products->details($id);
+
+        // return $details;
+        
+        return require httpLayouts('Products/ProductsLayout.php');
+
     }
 }

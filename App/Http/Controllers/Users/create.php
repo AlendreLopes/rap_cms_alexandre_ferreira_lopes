@@ -1,19 +1,6 @@
 <?php
 
-use App\Common\Sessions;
+use App\Http\Controllers\UsersController;
 
-// Users
-// 
-// Title
-$title = 'Register';
-// 
-// Errors
-$errors = [];
-$errors['errors'] = Sessions::get('errors');
-$errors['oldData'] = Sessions::get('oldData');
-// 
 // User Access Layout
-require httpLayouts('Users/UserLayoutAccess.php', [
-    'views' => $views,
-]);
-
+$user = (new UsersController)->create($views);

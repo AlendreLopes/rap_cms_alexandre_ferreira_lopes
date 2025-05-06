@@ -36,7 +36,7 @@
 
         <div class="form-check text-end my-3">
             <a href="/register">
-                Allread registred Sign Up!
+                Not registred Sign Up!
             </a>
         </div>
 

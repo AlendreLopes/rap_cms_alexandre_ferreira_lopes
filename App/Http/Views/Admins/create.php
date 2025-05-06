@@ -12,11 +12,15 @@
             
             <input type="hidden" name="_method" value="PUT">
 
-            <h3 class="display-6 fst-italic text-center">ADM Register</h3>
+            <h3 class="display-6 fst-italic text-center">
+                Administrators
+                <br>
+                Register
+            </h3>
 
             <?php if ($errors['errors']): ?>
                 <div class="col-sm-12 text-center text-danger m-2">
-                    <?= $errors['errors']['errors'] ?>
+                    <?= $errors['errors']['email'] ?>
                 </div>
             <?php endif; ?>
 

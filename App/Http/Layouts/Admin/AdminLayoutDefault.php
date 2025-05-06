@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>RAP CMS - Products</title>
+    <title>RAP CMS - Administrators</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -41,7 +41,7 @@
     </header>
 
     <!-- Slot Main Content -->
-    <main class="container mt-3 py-5">
+    <main class="container">
         <?php require httpViews($views); ?>
     </main>
 

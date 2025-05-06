@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UsersController;
 
 // // Log the user out
-$site = (new SiteController)->logout();
+$site = (new UsersController)->logout();
 
 header('location: /');
 

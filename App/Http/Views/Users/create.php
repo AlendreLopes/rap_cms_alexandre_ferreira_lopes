@@ -10,13 +10,11 @@
 
         <form id="userRegister" action="/register/create" method="POST">
 
-            <input type="hidden" name="_method" value="PUT">
-
             <h3 class="display-6 fst-italic text-center">User Register</h3>
 
             <?php if ($errors['errors']): ?>
                 <div class="col-sm-12 text-center text-danger m-2">
-                    <?= $errors['errors']['errors'] ?>
+                    <?= $errors['errors']['email'] ?>
                 </div>
             <?php endif; ?>
 
@@ -27,7 +25,8 @@
 
             <div class="form-control mb-2">
                 <label class="form-label" for="email">Email address</label>
-                <input name="email" type="email" class="form-control" placeholder="name@example.com" required>
+                <input id="email" name="email" type="email" class="form-control" placeholder="name@example.com"
+                    required>
             </div>
 
             <div class="form-control mb-2">
@@ -43,9 +42,20 @@
                     placeholder="Password Confirm" required>
             </div>
 
-            <button class="btn btn-outline-success w-100 py-2" type="submit">
-                <i class="fa-solid fa-door-closed"></i> &nbsp; Register &nbsp; <i class="fa-solid fa-door-open"></i>
-            </button>
+            <?php if ($errors['errors']): ?>
+
+                <div class="col-sm-12 text-center text-danger m-2">
+                    <a href="/login" class="d-block btn btn-success">Login</a>
+                </div>
+
+            <?php else: ?>
+
+                <button class="btn btn-outline-success w-100 py-2" type="submit">
+                    <i class="fa-solid fa-door-closed"></i> &nbsp; Register &nbsp; <i class="fa-solid fa-door-open"></i>
+                </button>
+
+
+            <?php endif; ?>
 
             <div class="form-check text-end my-3">
                 <a href="/login">
@@ -58,7 +68,6 @@
                     Forgot password?
                 </a>
             </div>
-
         </form>
     </div>
 

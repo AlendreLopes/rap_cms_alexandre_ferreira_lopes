@@ -32,7 +32,7 @@ $(function () {
     // $('.table').DataTable();
 
     //display the summernote drop down menu
-    // $('.dropdown-toggle').dropdown();
+    $('.dropdown-toggle').dropdown();
 
     // // Manipulate Images
     // function handleImageInputChange(input, image) {

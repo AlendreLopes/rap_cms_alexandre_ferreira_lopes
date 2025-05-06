@@ -9,7 +9,7 @@ class Adm
 
         if (!isset($_SESSION['rap_cms']['userAdm'])) {
 
-            header('location: /');
+            header('location: /administrators/login');
 
             exit();
 

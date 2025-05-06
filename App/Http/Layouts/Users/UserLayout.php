@@ -83,9 +83,9 @@
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "{{ session('success') }}",
+                title: "<?= $_SESSION['success'] ?>",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             });
         </script>
     <?php endif; ?>
@@ -96,9 +96,9 @@
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title: "{{ session('error') }}",
+                title: "<?= $_SESSION['error'] ?>",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             });
         </script>
     <?php endif; ?>

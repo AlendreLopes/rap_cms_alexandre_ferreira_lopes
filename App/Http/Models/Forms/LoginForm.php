@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Http\Models\Forms;
 
 use App\Common\Validations\Validation;
 use App\Common\Validations\ValidationException;
@@ -11,6 +11,7 @@ class LoginForm
 
     public function __construct(public array $attributes)
     {
+        
         if (!Validation::email($attributes['email'])) {
             $this->errors['email'] = 'Please provide a valid email address.';
         }
@@ -18,6 +19,7 @@ class LoginForm
         if (!Validation::string($attributes['password'], 8, 150)) {
             $this->errors['password'] = 'Please provide a valid password.';
         }
+
     }
 
     public static function validate($attributes)

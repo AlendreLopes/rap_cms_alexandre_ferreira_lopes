@@ -1,35 +1,60 @@
 <?php
 
+namespace App\Http\Controllers;
+
+use App\App;
+use App\Common\Database\Connection;
+use App\Common\Sessions;
+
 class AdminController
 {
-    protected $views;
 
-    public function __construct(string $getView)
+    public function index($views)
     {
-        $this->views = $getView;
-    }
-
-    public function index()
-    {
-        require ViewsController::layouts('Admin/AdminLayoutSlot.php', [
-            'view' => $this->views,
-        ]);
+        // Title
+        // $title = 'Administrators';
+        require httpLayouts('Admin/AdminLayout.php');
     }
 
     public function update($id)
     {
-        $model = new Site();
-        // $model->store($id);
-        echo $model->store($id);
     }
 
-    public function login()
+    public function login($email, $password)
     {
-        $user = '';
+        $admin = App::resolve(Connection::class)->query("SELECT * FROM admins WHERE email = :email", [
+            ':email' => $email
+        ])->fetch();
+
+        if ($admin) {
+            // If yes, redirect to login page
+            if (password_verify($password, $admin['password'])) {
+
+                $_SESSION['rap_cms'] = [
+                    'logged_in' => true,
+                    'dashboard' => [
+                        'index' => '/administrator',
+                        'profile' => '/administrator/users/profile',
+                        'logout' => '/administrator/logout'
+                    ],
+                    'userId' => $admin['id'],
+                    'userAdm' => true,
+                    'userName' => $admin['username'],
+                    'userEmail' => $admin['email']
+                ];
+
+                session_regenerate_id(true);
+
+                return true;
+            }
+
+            return false;
+        }
+
     }
 
     public function logout()
     {
-        $user = '';
+        Sessions::destroy();
     }
 }

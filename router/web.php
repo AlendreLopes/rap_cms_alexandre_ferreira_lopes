@@ -30,7 +30,7 @@ $router->get('/forgot-password', 'Users/Profile/forgot_password.php')->only('gue
 $router->patch('/forgot-password/recover', 'Users/Profile/recover.php');
 // Site Users Register
 $router->get('/register', 'Users/create.php')->only('guest');
-$router->post('/register/create', 'Users/Profile/store.php');
+$router->post('/register/create', 'Users/Profile/store.php')->only('guest');
 // 
 // 
 // 
@@ -52,14 +52,14 @@ $router->get('/dashboard/users/orders', 'Users/Products/orders.php')->only('auth
 // 
 // 
 // Administrators Users Login
-$router->get('/admins/login', 'Admins/login.php')->only('guest');
-$router->post('/admins/store', 'Admins/signin.php');
+$router->get('/administrators/login', 'Admins/login.php')->only('guest');
+$router->post('/administrators/store', 'Admins/signin.php');
 // Administrators Users Forgot password
-$router->get('/admins/forgot-password', 'Admins/forgot_password.php')->only('guest');
-$router->patch('/admins/forgot-password/recover', 'Admins/Profile/recover.php');
+$router->get('/administrators/forgot-password', 'Admins/forgot_password.php')->only('guest');
+$router->patch('/administrators/forgot-password/recover', 'Admins/Profile/recover.php');
 // Administrators Users Register
-$router->get('/admins/register', 'Admins/create.php')->only('guest');
-$router->post('/admins/register/store', 'Admins/store.php');
+$router->get('/administrators/register', 'Admins/create.php')->only('guest');
+$router->post('/administrators/register/store', 'Admins/store.php');
 // 
 // 
 // 
@@ -84,23 +84,3 @@ $router->put('/administrators/products/images/store', 'Admins/Products/Images/st
 // Products Images Edit
 $router->get('/administrators/products/images/edit', 'Admins/Products/Images/edit.php')->only('adm');
 $router->patch('/administrators/products/images/update', 'Admins/Products/Images/update.php')->only('adm');
-// 
-// Blog
-// Blog Show - Products with TABs that show options view default Products and option Images
-$router->get('/administrators/blog/show', 'Admins/Blog/show.php')->only('adm');
-// Blog Create
-$router->get('/administrators/blog/create', 'Admins/Blog/create.php')->only('adm');
-$router->put('/administrators/blog/store', 'Admins/Blog/store.php')->only('adm');
-// Blog Edit
-$router->get('/administrators/blog/edit', 'Admins/Blog/edit.php')->only('adm');
-$router->patch('/administrators/blog/update', 'Admins/Blog/update.php')->only('adm');
-// Blog Images
-$router->get('/administrators/blog/images/images', 'Admins/Blog/Images/index.php')->only('adm');
-// Blog Images Show
-$router->get('/administrators/blog/images/show', 'Admins/Blog/Images/show.php')->only('adm');
-// Blog Images Create
-$router->get('/administrators/blog/images/create', 'Admins/Blog/Images/create.php')->only('adm');
-$router->put('/administrators/blog/images/store', 'Admins/Blog/Images/store.php')->only('adm');
-// Blog Images Edit
-$router->get('/administrators/blog/images/edit', 'Admins/Blog/Images/edit.php')->only('adm');
-$router->patch('/administrators/blog/images/update', 'Admins/Blog/Images/update.php')->only('adm');
