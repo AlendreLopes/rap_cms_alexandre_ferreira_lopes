@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminsController;
 
 // Administrators Layouts
-$admin = (new AdminController)->index($views);
+$admin = (new AdminsController)->index($views);

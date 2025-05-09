@@ -6,7 +6,9 @@
         </a>
     </div>
 
-    <form id="userLoginForm" action="/admins/login/store" method="POST">
+    <form id="loginForm" action="/administrators/login/store" method="POST">
+        
+        <input type="hidden" name="_method" value="PUT">
 
         <h1 class="h3 mb-3 fw-normal text-center">
             Administrators
@@ -38,13 +40,13 @@
         </button>
 
         <div class="form-check text-end my-3">
-            <a href="/admins/register">
-                Already registred Sign Up!
+            <a href="/administrators/register">
+                Not registered Sign Up!
             </a>
         </div>
 
         <div class="form-check text-end my-3">
-            <a href="/admins/forgot-password">
+            <a href="/administrators/forgot-password">
                 Forgot password?
             </a>
         </div>

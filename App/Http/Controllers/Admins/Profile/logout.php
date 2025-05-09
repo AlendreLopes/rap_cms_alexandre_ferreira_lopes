@@ -1,7 +1,9 @@
 <?php
 
-// Log the user out
-usersLogout();
+use App\Http\Controllers\AdminsController;
+
+// Log the administrator out
+$logout = (new AdminsController())->logout();
 
 header('location: /');
 

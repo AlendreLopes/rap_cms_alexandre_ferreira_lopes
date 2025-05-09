@@ -29,7 +29,7 @@ $(function () {
     // $('#fileupload').fileupload();
 
     // // Data tables
-    // $('.table').DataTable();
+    $('.table').DataTable();
 
     //display the summernote drop down menu
     $('.dropdown-toggle').dropdown();

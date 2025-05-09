@@ -23,7 +23,7 @@
 
     <div class="d-flex flex-column flex-sm-row justify-content-between my-4">
 
-        <?= date('Y') ?> &copy; Company, Inc. All rights reserved.</p>
+        <p><?= date('Y') ?> &copy; Company, Inc. All rights reserved.</p>
 
         <ul class="list-unstyled d-flex">
             <li class="ms-3">

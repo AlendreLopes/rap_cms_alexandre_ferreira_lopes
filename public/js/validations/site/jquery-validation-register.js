@@ -2,12 +2,17 @@ $(function () {
 
     let text;
 
+    // $.validator.addMethod('strongPassword', function (value, element) {
+    //     return value.length >= 8 && /[a-z]/i.test(value) && /[A-Z]/i.test(value) && /([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g.test(value);
+    //     //  && /\d/.text(value) && /[a-z]/i.test(value) && /[A-Z]/i.test(value)
+    // }, "Min 8 chars long / special chars with <br> One or More Capital and Lower Letter!");
+    
     $.validator.addMethod('strongPassword', function (value, element) {
-        return value.length >= 8 && /[a-z]/i.test(value) && /[A-Z]/i.test(value) && /([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g.test(value);
+        return value.length >= 8 && /\d/g.text(value) && /[a-z]/g.test(value) && /[A-Z]/g.test(value) && /([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g.test(value);
         //  && /\d/.text(value) && /[a-z]/i.test(value) && /[A-Z]/i.test(value)
     }, "Min 8 chars long / special chars with <br> One or More Capital and Lower Letter!");
 
-    $("#userRegister").validate({
+    $("#registerForm").validate({
         rules: {
             username: {
                 required: true,

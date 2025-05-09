@@ -5,92 +5,25 @@ namespace App\Http\Models;
 use App\App;
 use App\Common\Database\Connection;
 use App\Common\Sessions;
-use App\Http\Models\Forms\LoginForm;
-use App\Http\Models\Forms\RegisterForm;
+use App\Http\Models\Forms\UserAddressForm;
 
 class Users
 {
 
-    public function login($email, $password)
+    public function update($id, $username, $email, $password): bool
     {
         $connection = App::resolve(Connection::class);
 
-        $query = "SELECT * FROM users WHERE email = :email";
-
-        $user = $connection->query($query, [
-            ':email' => $email
-        ])->fetch();
-
-        if ($user) {
-
-            if (password_verify($password, $user['password'])) {
-
-                $_SESSION['rap_cms'] = [
-                    'logged_in' => true,
-                    'dashboard' => [
-                        'index' => '/dashboard',
-                        'profile' => '/dashboard/users/profile',
-                        'logout' => '/dashboard/users/logout'
-                    ],
-                    'userId' => $user['id'],
-                    'userAdm' => false,
-                    'userName' => $user['username'],
-                    'userEmail' => $user['email']
-                ];
-
-                session_regenerate_id(true);
-
-                Sessions::add('success', "Welcome back {$user['username']}!");
-
-                return true;
-
-            }
-
-            return false;
-        }
-
-        return false;
-    }
-
-    public function signing()
-    {
-
-        $form = LoginForm::validate($attributes = [
-            'email' => $_POST['email'],
-            'password' => $_POST['password']
-        ]);
-
-
-        $login = $this->login($attributes['email'], $attributes['password']);
-
-        if (!$login) {
-
-            $form->hasErrors('email', 'No matching account found for email or password')->throw();
-
-            return false;
-
-        }
-
-        return true;
-
-    }
-
-    public function update($id, $title, $description, $status): bool
-    {
-
-        // Call method of the Model User
-
-        $connection = App::resolve(Connection::class);
-
-        $query = "UPDATE users SET title = :title, description = :description, status = :status, updated_at = :updated_at WHERE id = :id";
+        $query = "UPDATE users SET username = username, email = :email, password = :password, status = :status, updated_at = :updated_at WHERE id = :id";
 
         $update = $connection->query(
             $query,
             [
                 ':id' => $id,
-                ':title' => htmlspecialchars($title),
-                ':description' => htmlspecialchars($description),
-                ':status' => htmlspecialchars($status),
+                ':username' => htmlspecialchars($username),
+                ':email' => htmlspecialchars($email),
+                ':password' => htmlspecialchars($password),
+                ':status' => 10,
                 ':updated_at' => date("Y-m-d H:i:s")
             ]
         );
@@ -106,83 +39,70 @@ class Users
         Sessions::add('success', 'Error to try edit User!');
 
         return false;
-
     }
 
-    public function registre($username, $email, $password): bool
+    public function addressCreate()
     {
-        // Check account by email, this field is unique, if already exist
-        $connection = App::resolve(Connection::class);
+        // dd($_POST);
+        $address = UserAddressForm::validate($attributes = [
+            'zip_code' => htmlspecialchars($_POST['zip_code']),
+            'address' => htmlspecialchars($_POST['address']),
+            'address_number' => htmlspecialchars($_POST['address_number']),
+            'neighborhood' => htmlspecialchars($_POST['neighborhood']),
+            'city' => htmlspecialchars($_POST['city']),
+            'state' => htmlspecialchars($_POST['state']),
+            'country' => htmlspecialchars($_POST['country']),
+        ]);
 
-        $query = "SELECT * FROM users WHERE email = :email";
+        // dd($attributes);
+        $store = $this->addressStore(
+            $_SESSION['rap_cms']['userId'],
+            $attributes['zip_code'],
+            $attributes['address'],
+            $attributes['address_number'],
+            htmlspecialchars($_POST['address_complement'] ?? 'Empty'),
+            $attributes['neighborhood'],
+            $attributes['city'],
+            $attributes['state'],
+            $attributes['country']
+        );
 
-        $user = $connection->query($query, [
-            ':email' => $email
-        ])->fetch();
+        if (!$store) {
 
-        if ($user) {
-
-            return false;
-
-        }
-
-        $store = $connection->query("INSERT INTO users(username, email, password, status, created_at) VALUES (:username, :email, :password, :status, :created_at)", [
-            ':username' => $username,
-            ':email' => $email,
-            ':password' => password_hash($password, PASSWORD_BCRYPT),
-            ':status' => 10,
-            ':created_at' => date("Y-m-d H:i:s"),
-        ])->fetch();
-
-        if ($store) {
-
-            // Get User data by email, this field is unique
-            $user = $this->getUserByEmail($email);
-
-            // Create session data user
-            $_SESSION['rap_cms'] = [
-                'logged_in' => false,
-                'dashboard' => [
-                    'index' => '/dashboard',
-                    'profile' => '/dashboard/users/profile',
-                    'logout' => '/dashboard/users/logout'
-                ],
-                'userId' => $user['id'],
-                'userAdm' => false,
-                'userName' => $user['username'],
-                'userEmail' => $user['email']
-            ];
-
-            session_regenerate_id(true);
-
-            Sessions::add('success', "Well come {$user['username']}, look our outlet!");
+            Sessions::add('success', 'Address add with success!');
 
             return true;
 
         }
+
+        Sessions::add('error', 'Error on try add address!');
+
+        $address->hasErrors('userAddress', 'Errors found on from')->throw();
+
+        return false;
     }
 
-    public function store(): bool
+    public function addressStore($user, $zip_code, $address, $address_number, $address_complement, $neighborhood, $city, $state, $country)
     {
+        $connection = App::resolve(Connection::class);
 
-        $form = RegisterForm::validate($attributes = [
-            'username' => $_POST['username'],
-            'email' => $_POST['email'],
-            'password' => $_POST['password']
-        ]);
+        $query = "INSERT INTO users_address (user_id, zip_code, address, address_number, address_complement, neighborhood, city, state, country, created_at) 
+        VALUES (:user_id, :zip_code, :address, :address_number, :address_complement, :neighborhood, :city, :state, :country, :created_at)";
 
-        $registre = $this->registre($attributes['username'], $attributes['email'], $attributes['password']);
+        $store = $connection->query($query, [
+            ':user_id' => $user,
+            ':zip_code' => $zip_code,
+            ':address' => $address,
+            ':address_number' => $address_number,
+            ':address_complement' => $address_complement,
+            ':neighborhood' => $neighborhood,
+            ':city' => $city,
+            ':state' => $state,
+            ':country' => $country,
+            ':created_at' => date("Y-m-d H:i:s"),
+        ])->fetch();
 
-        if (!$registre) {
-
-            $form->hasErrors('email', "Email allready registred!")->throw();
-
-            return false;
-
-        }
-
-        return true;
-
+        return $store;
     }
 
     public function getUserById($id)
@@ -196,6 +116,19 @@ class Users
         ])->fetch();
 
         return $user;
+    }
+
+    public function getUserByAddress($user)
+    {
+        $connection = App::resolve(Connection::class);
+
+        $query = "SELECT * FROM users_address WHERE user_id = :user_id";
+
+        $address = $connection->query($query, [
+            ':user_id' => $user
+        ])->fetchAll();
+
+        return $address;
     }
 
     public function getUserByEmail($email)
@@ -226,6 +159,24 @@ class Users
         }
 
         return false;
+    }
+
+    public function factory($number)
+    {
+        $faker = \Faker\Factory::create();
+
+        $connection = App::resolve(Connection::class);
+
+        for ($i = 0; $i < $number; $i++) {
+            $connection->query("INSERT INTO users(username, email, password, status, created_at) VALUES (:username, :email, :password, :status, :created_at)", [
+                ':username' => $faker->name(),
+                ':email' => $faker->unique()->email(),
+                ':password' => password_hash("password!", PASSWORD_BCRYPT),
+                ':status' => 10,
+                ':created_at' => date("Y-m-d H:i:s"),
+            ]);
+        }
+
     }
 
 }

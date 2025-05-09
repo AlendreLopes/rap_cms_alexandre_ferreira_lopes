@@ -21,6 +21,7 @@
   "homepage": "https://github.com/AlendreLopes/rap_cms_alexandre_ferreira_lopes#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "@vsilva472/jquery-viacep": "^1.0.3",
     "blueimp-file-upload": "^10.32.0",
     "bootstrap": "^5.3.3",
     "build": "^0.1.4",

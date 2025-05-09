@@ -8,7 +8,7 @@
 
     <div class="col-lg-12 px-0">
 
-        <form id="userRegister" action="/admins/register/store" method="POST">
+        <form id="registerForm" action="/administrators/register/store" method="POST">
             
             <input type="hidden" name="_method" value="PUT">
 
@@ -51,13 +51,13 @@
             </button>
 
             <div class="form-check text-end my-3">
-                <a href="/admins/login">
+                <a href="/administrators/login">
                     Alread registred Sign In here!
                 </a>
             </div>
 
             <div class="form-check text-end my-3">
-                <a href="/forgot-password">
+                <a href="/administrators/forgot-password">
                     Forgot password?
                 </a>
             </div>

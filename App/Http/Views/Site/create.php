@@ -8,7 +8,9 @@
 
     <div class="col-lg-12 px-0">
 
-        <form id="userRegister" action="/register/create" method="POST">
+        <form id="registerForm" action="/register/create" method="POST">
+
+            <input type="hidden" name="_method" value="PUT">
 
             <h3 class="display-6 fst-italic text-center">User Register</h3>
 

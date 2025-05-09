@@ -13,6 +13,7 @@
                     <input type="text" class="form-control" id="title" name="title" minlength="5" maxlength="50"
                         value="<?= $postTitle ?>" required>
                 </div>
+                
                 <?php if (isset($_SESSION['errors']['title'])): ?>
                     <?= $_SESSION['errors']['title'] ?>
                 <?php endif; ?>

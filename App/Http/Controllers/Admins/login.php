@@ -1,19 +1,7 @@
 <?php
 
-use App\Common\Sessions;
-
-// Administratos
+use App\Http\Controllers\AdminsController;
 // 
-// Title
-$title = 'Register';
-// 
-// Errors
-$errors = [];
-$errors['errors'] = Sessions::get('errors');
-$errors['oldData'] = Sessions::get('oldData');
-// 
-// User Access Layout
-require httpLayouts('Admin/AdminLayoutAccess.php', [
-    'views' => $views,
-]);
+// Administratos Access Layout
+$admin = (new AdminsController())->login($views);
 

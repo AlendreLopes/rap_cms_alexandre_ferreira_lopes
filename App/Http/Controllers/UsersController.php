@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\App;
 use App\Common\Database\Connection;
 use App\Common\Sessions;
-use App\Http\Models\LoginForm;
 use App\Http\Models\Users;
 
 
@@ -23,10 +22,20 @@ class UsersController
     {
         // Title
         $title = 'User';
+        // User
+        $user = $this->model->getUserById($_SESSION['rap_cms']['userId']);
         // 
         return require httpLayouts('Users/UserLayout.php');
     }
 
+    public function profile(string $views)
+    {
+        // Title
+        $title = 'Profile';
+        // 
+        // 
+        return require httpLayouts('Users/UserLayout.php');
+    }
     public function show(string $views, string $user)
     {
         // Title
@@ -36,30 +45,8 @@ class UsersController
         // 
         return require httpLayouts('Users/UserLayout.php');
     }
-
-    public function create($views)
-    {
-        // Title
-        $title = 'Register';
-        // 
-        // Errors
-        $errors = [];
-        $errors['errors'] = Sessions::get('errors');
-        $errors['oldData'] = Sessions::get('oldData');
-        // 
-        // User Access Layout
-        return require httpLayouts('Users/UserLayoutAccess.php');
-    }
-
-    public function store()
-    {
-        // Call method of the Model User
-        return $this->model->store();
-    }
-
     public function edit($views, $user)
     {
-
         // Title
         $title = 'Edit User';
         // Errors
@@ -68,9 +55,8 @@ class UsersController
         $errors['oldData'] = Sessions::get('oldData');
         // User
         $user = $this->model->getUserById($user);
-
+        // 
         return require httpLayouts('Users/UserLayout.php');
-
     }
 
     public function update($id, $title, $description, $status): bool
@@ -94,6 +80,46 @@ class UsersController
         Sessions::add('error', 'User do not deleted!');
 
         redirect('/');
+    }
+
+    public function address($views, $user)
+    {
+        // Title
+        $title = 'Address';
+        // 
+        $userAddress = $this->model->getUserByAddress($user);
+        // 
+        return require httpLayouts('Users/UserLayout.php');
+
+    }
+
+    public function addressCreate($views)
+    {
+        // Title
+        $title = 'Create Address';
+        // 
+        return require httpLayouts('Users/UserLayout.php');
+    }
+
+    public function addressStore()
+    {
+        $this->model->addressCreate();
+    }
+
+    public function addressEdit($views, $user)
+    {
+        // Title
+        $title = 'Edit Address';
+        // 
+        $address = $this->model->getUserByAddress($user);
+        // 
+        return require httpLayouts('Users/UserLayout.php');
+
+    }
+    public function addressUpdate($views)
+    {
+        // 
+        return require httpLayouts('Users/UserLayout.php');
     }
 
     public function getUserByEmail($email)
@@ -132,31 +158,6 @@ class UsersController
         ])->fetch();
 
         return $order;
-    }
-
-    public function login($views)
-    {
-        // Title
-        $title = 'Login';
-        // 
-        // Errors
-        $errors = [];
-        $errors['errors'] = Sessions::get('errors');
-        $errors['oldData'] = Sessions::get('oldData');
-        // 
-        // User Access Layout
-        return require httpLayouts('Users/UserLayoutAccess.php');
-    }
-
-    public function signing()
-    {
-        // Call method of the Model User
-        $this->model->signing();
-    }
-
-    public function logout()
-    {
-        Sessions::destroy();
     }
 
 }

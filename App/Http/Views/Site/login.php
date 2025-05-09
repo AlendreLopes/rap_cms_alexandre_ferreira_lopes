@@ -6,7 +6,9 @@
         </a>
     </div>
 
-    <form id="userLoginForm" action="/login/store" method="POST">
+    <form id="loginForm" action="/login/store" method="POST">
+
+        <input type="hidden" name="_method" value="PUT">
 
         <h1 class="h3 mb-3 fw-normal text-center">Sign in</h1>
 

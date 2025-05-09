@@ -2,7 +2,7 @@ $(function () {
 
     let text;
 
-    $("#userRecoverForm").validate({
+    $("#recoverForm").validate({
         rules: {
             email: {
                 required: true,

@@ -71,12 +71,35 @@
                         style="width: 180px">
                 </form>
                 <!-- Logged In -->
-                <?php if (isset($_SESSION['rap_cms'])): ?>
-                    <!-- User Loggin -->
+                <?php if (isset($_SESSION['rap_cms_adm'])): ?>
+                    <!-- Adms Logge in -->
                     <div class="dropdown text-end mx-2">
-                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle mt-1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user-tie" style="font-size:26px;"></i>
+                        </a>
+                        <ul class="dropdown-menu text-small dropdown-menu-end shadow">
+                            <li><a class="dropdown-item"
+                                    href="<?= $_SESSION['rap_cms_adm']['dashboard']['index'] ?>">Dashboard</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item"
+                                    href="<?= $_SESSION['rap_cms_adm']['dashboard']['profile'] ?>">Profile</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form action="<?= $_SESSION['rap_cms_adm']['dashboard']['logout'] ?>" method="POST">
+                                    <button class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                <?php elseif(isset($_SESSION['rap_cms'])): ?>
+                    <!-- User Logge in -->
+                    <div class="dropdown text-end mx-2">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle mt-1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user" style="font-size:26px;"></i>
                         </a>
                         <ul class="dropdown-menu text-small dropdown-menu-end shadow">
                             <li><a class="dropdown-item" href="<?= $_SESSION['rap_cms']['dashboard']['index'] ?>">Dashboard</a></li>
@@ -87,8 +110,7 @@
                             </li>
                             <li>
                                 <form action="<?= $_SESSION['rap_cms']['dashboard']['logout'] ?>" method="POST">
-                                    <input type="hidden" name="logout">
-                                    <button class="dropdown-item" href="<?= $_SESSION['rap_cms']['dashboard']['logout'] ?>">Sign out</button>
+                                    <button class="dropdown-item">Logout</button>
                                 </form>
                             </li>
                         </ul>

@@ -1,4 +1,7 @@
 <?php
 
-// Create query
-dd($_SESSION['rap_cms']['userName']);
+use App\Http\Controllers\UsersController;
+// 
+$id = $_SESSION['rap_cms']['userId'];
+// User Details
+$details = (new UsersController())->show($views, $id);

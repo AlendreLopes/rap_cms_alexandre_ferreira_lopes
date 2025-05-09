@@ -80,31 +80,6 @@
     <!-- Validate Form -->
     <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
     <script src="/public/js/validations/blog/jquery-validation-blog-create.js"></script>
-    <script>
-        // $('#blogForm').submit(function (e) {
-        //     e.preventDefault();
-        //     let formData = $(this);
-        //     // alert(formData);
-        //     let formCreate = blogCreate();
-        // });
-
-        // function blogCreate(dataForm) {
-        //     $.ajax({
-        //         type: "POST",
-        //         data: dataForm,
-        //         url: "/blog/store",
-        //         async:false
-        //     }).then(success, error);
-        // }
-
-        // function success(data) { 
-        //     console.log(data);
-        //  }
-
-        // function error(data) {
-        //     console.log(data);
-        // }
-    </script>
     <?php endif; ?>
 
     <?php if(isset($title) && $title == 'Show Post'): ?>
