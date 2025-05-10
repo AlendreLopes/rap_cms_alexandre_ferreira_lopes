@@ -155,7 +155,46 @@
     <!-- Main scripts -->
     <script src="/public/js/main.toggle.theme.js"></script>
 
-    <?php if (isset($title) && $title == 'Create Address'): ?>
+    <?php if (isset($title) && $title == 'Edit User'): ?>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/dashboard/jquery-validation-user-profile.js"></script>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+        <script>
+            $(function () {
+                $('#phone').mask('(00) 0 0000-0000');
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Security Account'): ?>
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/dashboard/jquery-validation-user-security-account.js"></script>
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Address'): ?>
+        <script>
+            // Delete Address
+            function deleteItem(id) {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById(id).submit();
+                    }
+                });
+            }
+        </script>
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Create Address' && $title == 'Edit Address'): ?>
         <!-- Jquery Mask Input -->
         <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
         <script src="/public/js/validations/dashboard/jquery-validation-address.js"></script>
@@ -173,22 +212,6 @@
                 });
 
             });
-            // Delete Address
-            function deleteItem(id) {
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById(id).submit();
-                    }
-                });
-            }
         </script>
     <?php endif; ?>
 

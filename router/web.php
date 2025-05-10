@@ -37,15 +37,21 @@ $router->put('/register/create', 'Site/Profile/store.php')->only('guest');
 $router->get('/dashboard', 'Users/index.php')->only('auth');
 // 
 // Users Profile
-$router->get('/dashboard/profile', 'Users/show.php')->only('auth');
-$router->get('/dashboard/edit', 'Users/edit.php')->only('auth');
-$router->patch('/dashboard/update', 'Users/Profile/update.php')->only('auth');
-$router->delete('/dashboard/delete', 'Users/Profile/destroy.php')->only('auth');
+$router->get('/dashboard/user/profile', 'Users/show.php')->only('auth');
+$router->get('/dashboard/user/edit', 'Users/edit.php')->only('auth');
+$router->patch('/dashboard/user/update', 'Users/Profile/update.php')->only('auth');
+
+$router->get('/dashboard/user/security', 'Users/security_account.php')->only('auth');
+$router->patch('/dashboard/user/profile/security', 'Users/Profile/security_account.php')->only('auth');
+
+$router->delete('/dashboard/user/delete', 'Users/Profile/destroy.php')->only('auth');
 // Users Address
-$router->get('/dashboard/address', 'Users/address.php')->only('auth');
-$router->get('/dashboard/address/create', 'Users/address.create.php')->only('auth');
-$router->put('/dashboard/address/store', 'Users/Profile/address.store.php')->only('auth');
-$router->delete('/dashboard/address/delete', 'Users/Profile/address.destroy.php')->only('auth');
+$router->get('/dashboard/user/address', 'Users/Profile/Address/index.php')->only('auth');
+$router->get('/dashboard/user/address/create', 'Users/Profile/Address/create.php')->only('auth');
+$router->put('/dashboard/user/address/store', 'Users/Profile/Address/Profile/address.store.php')->only('auth');
+$router->get('/dashboard/user/address/edit', 'Users/Profile/Address/edit.php')->only('auth');
+$router->patch('/dashboard/user/address/update', 'Users/Profile/Address/Profile/update.php')->only('auth');
+$router->delete('/dashboard/user/address/delete', 'Users/Profile/Address/Profile/destroy.php')->only('auth');
 // Logout
 $router->post('/dashboard/logout', 'Site/Profile/logout.php')->only('auth');
 // 

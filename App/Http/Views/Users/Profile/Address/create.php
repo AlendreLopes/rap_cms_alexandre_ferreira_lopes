@@ -6,7 +6,7 @@
             </a>
         </li>
         <li class="breadcrumb-item">
-            <a href="/dashboard/address">
+            <a href="/dashboard/user/address">
                 <i class="fa fa-address-card" aria-hidden="true"></i> Address(es)
             </a>
         </li>
@@ -30,7 +30,7 @@
 
         <div class="card-body">
 
-            <form id="addressForm" action="/dashboard/address/store" method="POST" data-viacep>
+            <form id="addressForm" action="/dashboard/user/address/store" method="POST" data-viacep>
 
                 <input type="hidden" name="_method" value="PUT" />
 

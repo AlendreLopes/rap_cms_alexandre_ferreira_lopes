@@ -32,13 +32,13 @@
                 <?php
                 foreach ($users as $user): ?>
                     <tr>
-                        <td><?= $user['username'] ?></td>
                         <td>
                             <a href="/administrators/users/show?id=<?= $user['id'] ?>"
-                                title="Show details of <?= $user['username'] ?>" class="btn btn-outline-info btn-sm">
-                                <?= $user['email'] ?>
+                                title="Show details of <?= $user['username'] ?>" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                                <?= $user['username'] ?>
                             </a>
                         </td>
+                        <td><?= $user['email'] ?></td>
                         <td><?= $user['phone'] ?? '00 0 0000-0000' ?></td>
                         <td><?= ($user['status'] == 10) ? "Active" : "Inactive" ?></td>
                         <td><?= ($user['profile_completed']) ? "Completed" : "Incomplete" ?></td>
@@ -47,15 +47,15 @@
                 <?php endforeach; ?>
 
                 <?php /* for ($i=0; $i < 30; $i++): ?>
-                <tr>
-                    <td><?= $faker->name() ?></td>
-                    <td><?= $faker->unique()->email() ?></td>
-                    <td><?= $faker->phoneNumber() ?></td>
-                    <td><?= $faker->randomKey([0 => 0, 10 => 10]) ?></td>
-                    <td><?= $faker->randomKey([0 => 0, 1 => 1]) ?></td>
-                    <td><img src="<?= $faker->fakeImgUrl($width = 30, $height = 30, $text = 'avatar') ?>" alt="" srcset=""></td>
-                </tr>
-                <?php endfor; */ ?>
+           <tr>
+               <td><?= $faker->name() ?></td>
+               <td><?= $faker->unique()->email() ?></td>
+               <td><?= $faker->phoneNumber() ?></td>
+               <td><?= $faker->randomKey([0 => 0, 10 => 10]) ?></td>
+               <td><?= $faker->randomKey([0 => 0, 1 => 1]) ?></td>
+               <td><img src="<?= $faker->fakeImgUrl($width = 30, $height = 30, $text = 'avatar') ?>" alt="" srcset=""></td>
+           </tr>
+           <?php endfor; */ ?>
             </tbody>
         </table>
 

@@ -106,15 +106,15 @@ class BlogController
         if ($update) {
 
             Sessions::add('success', 'Post edited witch success!');
+
             return true;
-            // return $this->edit('/blog/edit', $id);
 
         }
 
         Sessions::add('success', 'Error to try edit Post!');
-        return false;
-        // redirect("/blog/show?id={$id}");
 
+        return false;
+        
     }
 
     public function delete($id)

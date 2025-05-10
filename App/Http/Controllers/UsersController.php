@@ -28,14 +28,6 @@ class UsersController
         return require httpLayouts('Users/UserLayout.php');
     }
 
-    public function profile(string $views)
-    {
-        // Title
-        $title = 'Profile';
-        // 
-        // 
-        return require httpLayouts('Users/UserLayout.php');
-    }
     public function show(string $views, string $user)
     {
         // Title
@@ -45,6 +37,7 @@ class UsersController
         // 
         return require httpLayouts('Users/UserLayout.php');
     }
+
     public function edit($views, $user)
     {
         // Title
@@ -59,10 +52,29 @@ class UsersController
         return require httpLayouts('Users/UserLayout.php');
     }
 
-    public function update($id, $title, $description, $status): bool
+    public function update($user)
     {
         // Call method of the Model User
-        return $this->model->update($id, $title, $description, $status);
+        $this->model->edit($user);
+    }
+
+    public function security($views, $user)
+    {
+        // Title
+        $title = 'Security Account';
+        // Errors
+        $errors = [];
+        $errors['errors'] = Sessions::get('errors');
+        $errors['oldData'] = Sessions::get('oldData');
+        // User
+        $user = $this->model->getUserById($user);
+        // 
+        return require httpLayouts('Users/UserLayout.php');
+    }
+
+    public function securityAccount($user)
+    {
+        $this->model->security($user);
     }
 
     public function delete($id)
@@ -74,20 +86,21 @@ class UsersController
 
             Sessions::add('success', 'User deleted with succeess!');
 
-            redirect('/');
+            redirect('/dashboard');
         }
 
         Sessions::add('error', 'User do not deleted!');
 
-        redirect('/');
+        redirect('/dashboard');
     }
 
+    // Address
     public function address($views, $user)
     {
         // Title
         $title = 'Address';
         // 
-        $userAddress = $this->model->getUserByAddress($user);
+        $userAddress = $this->model->getUserAddressByUser($user);
         // 
         return require httpLayouts('Users/UserLayout.php');
 
@@ -106,27 +119,40 @@ class UsersController
         $this->model->addressCreate();
     }
 
-    public function addressEdit($views, $user)
+    public function addressEdit($views, $id)
     {
         // Title
         $title = 'Edit Address';
         // 
-        $address = $this->model->getUserByAddress($user);
+        $editAddress = $this->model->getUserAddressById($id);
         // 
         return require httpLayouts('Users/UserLayout.php');
 
     }
-    public function addressUpdate($views)
+
+    public function addressUpdate()
     {
-        // 
-        return require httpLayouts('Users/UserLayout.php');
+        return $this->model->addressEdit();
     }
 
-    public function getUserByEmail($email)
+    public function addressDelete($id)
     {
-        return $this->model->getUserByEmail($email);
+        $delete = $this->model->addressDestroy($id);
+
+        if ($delete) {
+
+            Sessions::add('success', 'Address deleted with succeess!');
+
+            redirect('/dashboard/address');
+        }
+
+        Sessions::add('error', 'Address do not deleted!');
+
+        redirect('/dashboard/address');
+
     }
 
+    // Orders
     /**
      * Summary of list orders
      */

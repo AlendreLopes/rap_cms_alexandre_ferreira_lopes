@@ -2,12 +2,7 @@ $(function () {
 
     let text;
 
-    $.validator.addMethod('strongPassword', function (value, element) {
-        return value.length >= 8 && /[a-z]/i.test(value) && /[A-Z]/g.test(value) && /([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g.test(value);
-        //  && /\d/.text(value) && /[a-z]/i.test(value) && /[A-Z]/i.test(value)
-    }, "Min 8 chars long / special chars with <br> One or More Capital and Lower Letter!");
-
-    $("#registerForm").validate({
+    $("#useEditForm").validate({
         rules: {
             username: {
                 required: true,
@@ -20,15 +15,10 @@ $(function () {
                 minlength: 5,
                 maxlength: 150,
             },
-            password: {
+            phone: {
                 required: true,
-                strongPassword: true,
-                minlength: 8,
-                maxlength: 150,
-            },
-            password_confirm: {
-                required: true,
-                equalTo: "#password",
+                minlength: 16,
+                maxlength: 20,
             },
         },
         messages: {
@@ -42,15 +32,10 @@ $(function () {
                 minlength: "The email post the min length is 5",
                 maxlength: "The email post the max length is 150"
             },
-            password: {
-                required: "Password is required",
-                minlength: "The password post the min length is 8",
-                maxlength: "The password post the max length is 150"
-            },
-            password_confirm: {
-                required: "Password confirm is required",
-                minlength: "The title post the min length is 5",
-                maxlength: "The title post the max length is 50"
+            phone: {
+                required: "Phone is required!",
+                minlength: "The phone post the min length is 16",
+                maxlength: "The phone post the max length is 20"
             },
         }
     });
