@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>Dashboard - <?= $title ?? 'SB Admin' ?></title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
@@ -38,24 +38,16 @@
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
             <i class="fas fa-bars"></i>
         </button>
-        <!-- Navbar Search-->
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                    aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                        class="fas fa-search"></i></button>
-            </div>
-        </form>
         <!-- Navbar-->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <ul class="navbar-nav mx-auto me-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <i class="fa-solid fa-user-tie" style="font-size:26px;"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="<?= $_SESSION['rap_cms_adm']['dashboard']['profile'] ?>">Settings</a>
+                    <li><a class="dropdown-item"
+                            href="<?= $_SESSION['rap_cms_adm']['dashboard']['profile'] ?>">Settings</a>
                     </li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li>
@@ -91,6 +83,26 @@
                         </a>
 
                         <div class="sb-sidenav-menu-heading">Interface</div>
+
+                        <a class="nav-link" href="/administrators/brands">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-signature"></i></div>
+                            Brands
+                        </a>
+
+                        <a class="nav-link" href="/administrators/categories">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-bars-staggered"></i></div>
+                            Categories
+                        </a>
+
+                        <a class="nav-link" href="/administrators/collors">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-palette"></i></div>
+                            Collors
+                        </a>
+
+                        <a class="nav-link" href="/administrators/sizes">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-arrows-to-circle"></i></div>
+                            Sizes
+                        </a>
 
                         <a class="nav-link" href="/administrators/orders">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-basket-shopping"></i></div>
@@ -151,34 +163,133 @@
     <!-- Main scripts -->
     <script src="/public/js/main.js"></script>
 
+<?php if (isset($title) && $title == 'Admin Edit'): ?>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/public/js/validations/dashboard/jquery-validation-user-profile.js"></script>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script>
+        $(function () {
+            $('#phone').mask('(00) 0 0000-0000');
+        });
+    </script>
+<?php endif; ?>
+
+<?php if (isset($title) && $title == 'Admin Security Account'): ?>
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/public/js/validations/dashboard/jquery-validation-user-security-account.js"></script>
+<?php endif; ?>
+
+<?php if (isset($title) && $title == 'Products' || $title == 'Brands' || $title == 'Categories' || $title == 'Collors'): ?>
+    <script>
+        function deleteItem(id) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(id).submit();
+                }
+            });
+        }
+    </script>
+<?php endif; ?>
+
+<?php if (isset($title) &&  $title == 'Brand Create' || $title == 'Brand Edit' ||  $title == 'Category Create' || $title == 'Category Edit' ||  $title == 'Collor Create' || $title == 'Collor Edit' || $title == 'Size Create' || $title == 'Size Edit'): ?>
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/public/js/validations/dashboard/jquery-validation-products-dependencies.js"></script>
+<?php endif; ?>
+
+<?php if (isset($title) && $title == 'Payment Create' || $title == 'Payment Edit'): ?>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/public/js/validations/dashboard/jquery-validation-payments.js"></script>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script>
+        $(function () {
+            $('#phone').mask('(00) 0 0000-0000');
+        });
+    </script>
+<?php endif; ?>
+
+<?php if (isset($title) && $title == 'Product Create' || $title == 'Product Edit'): ?>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/public/js/validations/dashboard/jquery-validation-products.js"></script>
+    <script>
+        $(function () {
+            // Type as you slug
+            $("#name").keyup(function () {
+                var Text = $(this).val();
+                Text = Text.toLowerCase();
+                Text = Text.replace(/[^\w ]+/g, "");
+                Text = Text.replace(/ +/g, "-");
+                $("#slug").val(Text);
+            });
+        });
+    </script>
+<?php endif; ?>
+
+<?php if (isset($title) && $title == 'Order Create' || $title == 'Order Edit'): ?>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/public/js/validations/dashboard/jquery-validation-orders.js"></script>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script>
+        $(function () {
+            $('#phone').mask('(00) 0 0000-0000');
+        });
+    </script>
+<?php endif; ?>
+
+<?php if (isset($title) && $title == 'Image Create' || $title == 'Image Edit'): ?>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/public/js/validations/dashboard/jquery-validation-images.js"></script>
+    <!-- Jquery Mask Input -->
+    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
     <!-- Blueimp File Upload -->
-    <!-- <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script> -->
+    <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+    <script>
+        $(function () {
+            $('#phone').mask('(00) 0 0000-0000');
+        });
+    </script>
+<?php endif; ?>
 
-    <!-- Session success -->
-    <?php if (isset($_SESSION['success'])): ?>
-        <script>
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "<?= $_SESSION['success'] ?>",
-                showConfirmButton: false,
-                timer: 2500
-            });
-        </script>
-    <?php endif; ?>
+<!-- Session success -->
+<?php if (isset($_SESSION['success'])): ?>
+    <script>
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "<?= $_SESSION['success'] ?>",
+            showConfirmButton: false,
+            timer: 2500
+        });
+    </script>
+<?php endif; ?>
 
-    <!-- Session Error -->
-    <?php if (isset($_SESSION['error'])): ?>
-        <script>
-            Swal.fire({
-                position: "top-end",
-                icon: "error",
-                title: "<?= $_SESSION['error'] ?>",
-                showConfirmButton: false,
-                timer: 2500
-            });
-        </script>
-    <?php endif; ?>
+<!-- Session Error -->
+<?php if (isset($_SESSION['error'])): ?>
+    <script>
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "<?= $_SESSION['error'] ?>",
+            showConfirmButton: false,
+            timer: 2500
+        });
+    </script>
+<?php endif; ?>
 
     <script src="/public/js/admin/scripts.js"></script>
 

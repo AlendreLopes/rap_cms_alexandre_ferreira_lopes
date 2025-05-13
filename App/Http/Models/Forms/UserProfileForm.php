@@ -16,7 +16,7 @@ class UserProfileForm
             $this->errors['username'] = 'Provide a username.';
         }
 
-        if (!Validation::string($attributes['email'])) {
+        if (!Validation::email($attributes['email'])) {
             $this->errors['email'] = 'Provide a válid email.';
         }
 

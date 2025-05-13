@@ -1,21 +1,8 @@
 <?php
 
-// Create query
-$sessionLoggedIn = 757;
-
-$id = $_GET['id'];
-
-$query = "SELECT * FROM posts WHERE id = :id";
-
-$post = $connection->query($query, [':id' => $id])->fetchOrAbort();
-
-// dd($user);
-authorize($post['created_by'] === $sessionLoggedIn);
-
-// Title
-$title = 'View Post';
-
-// Blog Layouts
-require httpLayouts('Blog/BlogLayout.php', [
-    'post' => $post,
-]);
+use App\Http\Controllers\AdminsController;
+// 
+// Get Current User
+$id = $_SESSION['rap_cms_adm']['userId'];
+// 
+$show = (new AdminsController())->show($views, $id);

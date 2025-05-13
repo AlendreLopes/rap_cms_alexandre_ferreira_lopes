@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminsController;
+use App\Http\Controllers\ProductsController;
 // 
 $id = $_GET['id'];
-// Order Details
-$details = (new AdminsController())->productsDetails($views, $id);
+// Administration Products Show
+$show = (new ProductsController())->show($views, $id);

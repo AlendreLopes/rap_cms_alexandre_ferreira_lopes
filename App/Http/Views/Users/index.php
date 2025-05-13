@@ -14,36 +14,40 @@
 
 </div>
 
-<div class="row p mx-auto">
+<div class="row mx-auto">
 
   <div class="col"></div>
 
   <div class="bg-dark col-6 py-3">
+
     <a href="/dashboard/user/profile"
       class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
       <i class="fa-solid fa-address-card me-2" style="font-size:30px; color:blueviolet;"></i> Personal Information
     </a>
+
   </div>
 
   <div class="col"></div>
 
 </div>
 
-<div class="row p mx-auto">
+<div class="row mx-auto">
 
   <div class="col"></div>
 
   <div class="bg-dark col-6 py-3">
+
     <a href="/dashboard/user/security" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
       <i class="fa-solid fa-user-secret me-2" style="font-size:30px; color:blueviolet;"></i> Security Account
     </a>
+    
   </div>
 
   <div class="col"></div>
 
 </div>
 
-<div class="row p mx-auto">
+<div class="row mx-auto">
 
   <div class="col"></div>
 

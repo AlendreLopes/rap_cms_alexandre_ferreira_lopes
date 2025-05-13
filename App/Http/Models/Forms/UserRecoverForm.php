@@ -12,32 +12,8 @@ class UserRecoverForm
     public function __construct(public array $attributes)
     {
 
-        if (!Validation::string($attributes['zip_code'])) {
-            $this->errors['zip_code'] = 'Provide Zip Code.';
-        }
-
-        if (!Validation::string($attributes['address'])) {
-            $this->errors['address'] = 'Provide a address.';
-        }
-
-        if (!Validation::string($attributes['address_number'])) {
-            $this->errors['address_number'] = 'Provide a address number.';
-        }
-
-        if (!Validation::string($attributes['neighborhood'])) {
-            $this->errors['neighborhood'] = 'Provide a neighborhood.';
-        }
-
-        if (!Validation::string($attributes['city'])) {
-            $this->errors['city'] = 'Provide a city.';
-        }
-
-        if (!Validation::string($attributes['state'])) {
-            $this->errors['state'] = 'Provide a state.';
-        }
-
-        if (!Validation::string($attributes['country'])) {
-            $this->errors['country'] = 'Provide a country.';
+        if (!Validation::email($attributes['email'])) {
+            $this->errors['email'] = 'Provide a válid email.';
         }
 
     }

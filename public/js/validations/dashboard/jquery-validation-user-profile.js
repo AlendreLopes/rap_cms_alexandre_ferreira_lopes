@@ -2,7 +2,7 @@ $(function () {
 
     let text;
 
-    $("#useEditForm").validate({
+    $("#editForm").validate({
         rules: {
             username: {
                 required: true,

@@ -9,6 +9,30 @@ use App\Common\Sessions;
 class Orders
 {
 
+    public function index()
+    {
+        $connection = App::resolve(Connection::class);
+
+        $query = "SELECT * FROM orders";
+
+        $orders = $connection->query($query)->fetchAll();
+
+        return $orders;
+    }
+
+    public function show($id)
+    {
+        $connection = App::resolve(Connection::class);
+
+        $query = "SELECT * FROM orders WHERE id = :id";
+
+        $order = $connection->query($query, [
+            ':id' => $id
+        ])->fetch();
+
+        return $order;
+    }
+
     public function update($id, $username, $email, $password): bool
     {
         $connection = App::resolve(Connection::class);
@@ -39,6 +63,7 @@ class Orders
 
         return false;
     }
+    
     public function register($username, $email, $password)
     {
         // Check account by email, this field is unique, if already exist
@@ -90,19 +115,6 @@ class Orders
 
     }
 
-    public function ordersDetails($id)
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM orders WHERE id = :id";
-
-        $orders = $connection->query($query, [
-            ':id' => $id
-        ])->fetch();
-
-        return $orders;
-    }
-
     public function destroy($id): bool
     {
         $connection = App::resolve(Connection::class);
@@ -135,6 +147,34 @@ class Orders
             ]);
         }
 
+    }
+
+    // Sections Admin and Users
+    public function ordersByUsersId($user)
+    {
+        $connection = App::resolve(Connection::class);
+
+        $query = "SELECT * FROM orders WHERE user_id = :user_id";
+
+        $orders = $connection->query($query, [
+            ':user_id' => $user
+        ])->fetchAll();
+
+        return $orders;
+    }
+
+    public function ordersDetailsByUsers($id, $user)
+    {
+        $connection = App::resolve(Connection::class);
+
+        $query = "SELECT * FROM orders WHERE id = :id, user_id = :user_id";
+
+        $order = $connection->query($query, [
+            ':id' => $id,
+            ':user_id' => $user
+        ])->fetch();
+
+        return $order;
     }
 
 }

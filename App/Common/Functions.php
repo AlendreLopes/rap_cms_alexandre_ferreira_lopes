@@ -98,3 +98,8 @@ function old($key, $default = '')
 {
     return Sessions::get('oldData')[$key] ?? $default;
 }
+
+function currency($value)
+{
+    return number_format($value, 2, ',', '.');
+}

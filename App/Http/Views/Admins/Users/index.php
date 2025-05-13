@@ -45,18 +45,8 @@
                         <td><?= $user['profile_photo_path'] ?? "Empty" ?></td>
                     </tr>
                 <?php endforeach; ?>
-
-                <?php /* for ($i=0; $i < 30; $i++): ?>
-           <tr>
-               <td><?= $faker->name() ?></td>
-               <td><?= $faker->unique()->email() ?></td>
-               <td><?= $faker->phoneNumber() ?></td>
-               <td><?= $faker->randomKey([0 => 0, 10 => 10]) ?></td>
-               <td><?= $faker->randomKey([0 => 0, 1 => 1]) ?></td>
-               <td><img src="<?= $faker->fakeImgUrl($width = 30, $height = 30, $text = 'avatar') ?>" alt="" srcset=""></td>
-           </tr>
-           <?php endfor; */ ?>
             </tbody>
+
         </table>
 
     </div>

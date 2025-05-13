@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminsController;
-
-// Administration Users
-$users = (new AdminsController())->products($views);
+use App\Http\Controllers\ProductsController;
+// 
+// Administration Products
+$index = (new ProductsController())->index($views);

@@ -5,121 +5,14 @@ namespace App\Http\Models;
 use App\App;
 use App\Common\Database\Connection;
 use App\Common\Sessions;
+use App\Http\Models\Forms\AdminProfileForm;
+use App\Http\Models\Forms\AdminSecurityForm;
 use App\Http\Models\Forms\LoginForm;
 use App\Http\Models\Forms\RegisterForm;
 
 class Admins
 {
     
-    // Administrators Panel
-    // Section Interface
-    public function orders()
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM orders";
-
-        $orders = $connection->query($query)->fetchAll();
-
-        return $orders;
-    }
-
-    public function ordersDetails($id)
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM orders WHERE id = :id";
-
-        $order = $connection->query($query, [
-            ':id' => $id
-        ])->fetch();
-
-        return $order;
-    }
-
-    public function payments()
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM payments";
-
-        $payments = $connection->query($query)->fetchAll();
-
-        return $payments;
-    }
-
-    public function paymentsDetails($id)
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM payments WHERE id = :id";
-
-        $payments = $connection->query($query, [
-            ':id' => $id
-        ])->fetch();
-
-        return $payments;
-    }
-
-    public function products()
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM products";
-
-        $products = $connection->query($query)->fetchAll();
-
-        return $products;
-    }
-    public function productsInsert()
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM products";
-
-        $products = $connection->query($query);
-
-        return $products;
-    }
-
-    public function productsDetails($id)
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM products WHERE id = :id";
-
-        $products = $connection->query($query, [
-            ':id' => $id
-        ])->fetch();
-
-        return $products;
-    }
-
-    public function users()
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM users";
-
-        $users = $connection->query($query)->fetchAll();
-
-        return $users;
-    }
-
-    public function usersDetails($id)
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "SELECT * FROM users WHERE id = :id";
-
-        $users = $connection->query($query, [
-            ':id' => $id
-        ])->fetch();
-
-        return $users;
-    }
-    // 
-    // Section Administrators
     public function login($email, $password)
     {
         $connection = App::resolve(Connection::class);
@@ -183,14 +76,37 @@ class Admins
 
     }
 
-    public function update($id, $username, $email, $password): bool
+    public function edit($id)
+    {
+        $edit = AdminProfileForm::validate($attributes = [
+            'username' => $_POST['username'],
+            'email' => $_POST['email'],
+            'phone' => $_POST['phone']
+        ]);
+
+        $update = $this->update($id, $attributes['username'], $attributes['email'], $attributes['phone']);
+
+        if (!$update) {
+            
+            $edit->hasErrors('username', 'Errors found on the form')->throw();
+
+            return false;
+
+        }
+
+        Sessions::add('success', 'Admins data updated with success!');
+
+        return true;
+    }
+
+    public function update($id, $username, $email, $phone): bool
     {
 
         // Call method of the Model User
 
         $connection = App::resolve(Connection::class);
 
-        $query = "UPDATE administrators SET username = username, email = :email, password = :password, status = :status, updated_at = :updated_at WHERE id = :id";
+        $query = "UPDATE administrators SET username = :username, email = :email, phone = :phone, status = :status, updated_at = :updated_at WHERE id = :id";
 
         $update = $connection->query(
             $query,
@@ -198,7 +114,7 @@ class Admins
                 ':id' => $id,
                 ':username' => htmlspecialchars($username),
                 ':email' => htmlspecialchars($email),
-                ':password' => htmlspecialchars($password),
+                ':phone' => htmlspecialchars($phone),
                 ':status' => 10,
                 ':updated_at' => date("Y-m-d H:i:s")
             ]
@@ -216,6 +132,49 @@ class Admins
 
         return false;
 
+    }
+
+    public function security($user)
+    {
+        $security = AdminSecurityForm::validate($attributes = [
+            'password' => $_POST['password'],
+        ]);
+
+        $securityAccount = $this->securityAccount($user, $attributes['password']);
+
+        if (!$securityAccount) {
+
+            $security->hasErrors('password', 'Errors found on form!');
+
+            return false;
+        }
+
+        Sessions::add('success', 'Password updated with success!');
+
+        return true;
+    }
+
+    public function securityAccount($id, $password)
+    {
+        $connection = App::resolve(Connection::class);
+
+        $query = "UPDATE administrators SET password = :password WHERE id = :id";
+
+        $update = $connection->query(
+            $query,
+            [
+                ':id' => $id,
+                ':password' => password_hash($password, PASSWORD_BCRYPT),
+            ]
+        );
+
+        if ($update) {
+
+            return true;
+
+        }
+
+        return false;
     }
 
     public function register($username, $email, $password)
@@ -293,6 +252,22 @@ class Admins
 
     }
 
+    public function destroy($id): bool
+    {
+        $connection = App::resolve(Connection::class);
+
+        $query = "DELETE FROM administrators WHERE id = :id";
+
+        $destroy = $connection->query($query, [':id' => $id]);
+
+        if ($destroy) {
+
+            return true;
+        }
+
+        return false;
+    }
+
     public function getAdminById($id)
     {
         $connection = App::resolve(Connection::class);
@@ -318,22 +293,6 @@ class Admins
         ])->fetch();
 
         return $user;
-    }
-
-    public function destroy($id): bool
-    {
-        $connection = App::resolve(Connection::class);
-
-        $query = "DELETE FROM administrators WHERE id = :id";
-
-        $destroy = $connection->query($query, [':id' => $id]);
-
-        if ($destroy) {
-
-            return true;
-        }
-
-        return false;
     }
 
 }

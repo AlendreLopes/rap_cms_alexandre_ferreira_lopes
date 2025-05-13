@@ -28,7 +28,7 @@
 
         <div class="card-body">
 
-            <form id="useEditForm" action="/dashboard/user/update" method="POST" data-viacep>
+            <form id="editForm" action="/dashboard/user/update" method="POST" data-viacep>
 
                 <input type="hidden" name="_method" value="PATCH" />
 

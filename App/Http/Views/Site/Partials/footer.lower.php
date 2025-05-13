@@ -43,7 +43,7 @@
             </li>
             <li class="ms-3">
                 <a class="link-body-emphasis" href="#">
-                    <i class="fa-brands fa-paypal" style="font-size:30px;"></i>
+                    <i class="fa-brands fa-cc-paypal" style="font-size:30px;"></i>
                 </a>
             </li>
         </ul>
