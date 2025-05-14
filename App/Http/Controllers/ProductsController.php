@@ -7,6 +7,7 @@ use App\Http\Models\Brands;
 use App\Http\Models\Categories;
 use App\Http\Models\Collors;
 use App\Http\Models\Products;
+use App\Http\Models\ProductsImages;
 use App\Http\Models\Sizes;
 
 class ProductsController
@@ -21,6 +22,8 @@ class ProductsController
 
     protected $sizes;
 
+    protected $images;
+
     public function __construct()
     {
         $this->model = new Products();
@@ -28,6 +31,7 @@ class ProductsController
         $this->categories = new Categories();
         $this->collors = new Collors();
         $this->sizes = new Sizes();
+        $this->images = new ProductsImages();
     }
 
     public function indexProductsSite($views)
@@ -55,9 +59,10 @@ class ProductsController
     public function show($views, $id)
     {
         // Title
-        $title = 'Product Details';
+        $title = 'Product Show';
         // 
         $show = $this->model->show($id);
+        $images = $this->images->show($id);
         return require httpLayouts('Admin/AdminLayout.php');
     }
 

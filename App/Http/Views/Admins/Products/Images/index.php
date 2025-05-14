@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-2">
                 <i class="fas fa-table me-1"></i>
-                Products
+                Products Images
             </div>
-            <div class="col-10 text-end">
-                <a href="/administrators/products/create" class="btn btn-outline-success align-self-end">Create</a>
-            </div>
+            <!-- <div class="col-10 text-end">
+                <a href="/administrators/products/images/create" class="btn btn-outline-success align-self-end"><i class="fa fa-upload" aria-hidden="true"></i> Upload</a>
+            </div> -->
         </div>
     </div>
 
@@ -36,7 +36,7 @@
                 </tr>
             </tfoot>
             <tbody>
-                <?php foreach ($products as $product): ?>
+                <?php foreach ($images as $image): ?>
                     <tr>
                         <th>User Name</th>
                         <th>Product Name</th>

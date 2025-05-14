@@ -84,26 +84,6 @@
 
                         <div class="sb-sidenav-menu-heading">Interface</div>
 
-                        <a class="nav-link" href="/administrators/brands">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-signature"></i></div>
-                            Brands
-                        </a>
-
-                        <a class="nav-link" href="/administrators/categories">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-bars-staggered"></i></div>
-                            Categories
-                        </a>
-
-                        <a class="nav-link" href="/administrators/collors">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-palette"></i></div>
-                            Collors
-                        </a>
-
-                        <a class="nav-link" href="/administrators/sizes">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-arrows-to-circle"></i></div>
-                            Sizes
-                        </a>
-
                         <a class="nav-link" href="/administrators/orders">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-basket-shopping"></i></div>
                             Orders
@@ -119,10 +99,47 @@
                             Products
                         </a>
 
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Products Dep
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <!-- <a class="nav-link" href="/administrators/products/images">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-image"></i></div>
+                                    Images
+                                </a> -->
+
+                                <a class="nav-link" href="/administrators/brands">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-signature"></i></div>
+                                    Brands
+                                </a>
+
+                                <a class="nav-link" href="/administrators/categories">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-bars-staggered"></i></div>
+                                    Categories
+                                </a>
+
+                                <a class="nav-link" href="/administrators/collors">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-palette"></i></div>
+                                    Collors
+                                </a>
+
+                                <a class="nav-link" href="/administrators/sizes">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-arrows-to-circle"></i></div>
+                                    Sizes
+                                </a>
+                            </nav>
+                        </div>
+
                         <a class="nav-link" href="/administrators/users">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
                             Users
                         </a>
+
 
                     </div>
 
@@ -163,139 +180,185 @@
     <!-- Main scripts -->
     <script src="/public/js/main.js"></script>
 
-<?php if (isset($title) && $title == 'Admin Edit'): ?>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="/public/js/validations/dashboard/jquery-validation-user-profile.js"></script>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-    <script>
-        $(function () {
-            $('#phone').mask('(00) 0 0000-0000');
-        });
-    </script>
-<?php endif; ?>
+    <?php if (isset($title) && $title == 'Admin Edit'): ?>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/dashboard/jquery-validation-user-profile.js"></script>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+        <script>
+            $(function () {
+                $('#phone').mask('(00) 0 0000-0000');
+            });
+        </script>
+    <?php endif; ?>
 
-<?php if (isset($title) && $title == 'Admin Security Account'): ?>
-    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="/public/js/validations/dashboard/jquery-validation-user-security-account.js"></script>
-<?php endif; ?>
+    <?php if (isset($title) && $title == 'Admin Security Account'): ?>
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/dashboard/jquery-validation-user-security-account.js"></script>
+    <?php endif; ?>
 
-<?php if (isset($title) && $title == 'Products' || $title == 'Brands' || $title == 'Categories' || $title == 'Collors'): ?>
-    <script>
-        function deleteItem(id) {
+    <?php if (isset($title) && $title == 'Products' || $title == 'Product Show' || $title == 'Products Images' || $title == 'Brands' || $title == 'Categories' || $title == 'Collors'): ?>
+        <script>
+            function deleteItem(id) {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById(id).submit();
+                    }
+                });
+            }
+        </script>
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Product Create' || $title == 'Product Edit'): ?>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/dashboard/jquery-validation-products.js"></script>
+        <script>
+            $(function () {
+                // Type as you slug
+                $("#name").keyup(function () {
+                    var Text = $(this).val();
+                    Text = Text.toLowerCase();
+                    Text = Text.replace(/[^\w ]+/g, "");
+                    Text = Text.replace(/ +/g, "-");
+                    $("#slug").val(Text);
+                });
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Create Image' || $title == 'Edit Image'): ?>
+
+        <!-- the fileinput plugin styling CSS file -->
+        <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" media="all"
+            rel="stylesheet" type="text/css" />
+
+        <!-- if using RTL (Right-To-Left) orientation, load the RTL CSS file after fileinput.css by uncommenting below -->
+        <!-- link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput-rtl.min.css" media="all" rel="stylesheet" type="text/css" /-->
+
+        <!-- buffer.min.js and filetype.min.js are necessary in the order listed for advanced mime type parsing and more correct
+             preview. This is a feature available since v5.5.0 and is needed if you want to ensure file mime type is parsed 
+             correctly even if the local file's extension is named incorrectly. This will ensure more correct preview of the
+             selected file (note: this will involve a small processing overhead in scanning of file contents locally). If you 
+             do not load these scripts then the mime type parsing will largely be derived using the extension in the filename
+             and some basic file content parsing signatures. -->
+        <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/buffer.min.js"
+            type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/filetype.min.js"
+            type="text/javascript"></script>
+
+        <!-- piexif.min.js is needed for auto orienting image files OR when restoring exif data in resized images and when you
+            wish to resize images before upload. This must be loaded before fileinput.min.js -->
+        <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"
+            type="text/javascript"></script>
+
+        <!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview. 
+            This must be loaded before fileinput.min.js -->
+        <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/sortable.min.js"
+            type="text/javascript"></script>
+
+        <!-- the main fileinput plugin script JS file -->
+        <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
+
+        <!-- following theme script is needed to use the Font Awesome 5.x theme (`fa5`). Uncomment if needed. -->
+        <!-- script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/themes/fa5/theme.min.js"></script -->
+
+        <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
+        <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/locales/LANG.js"></script>
+
+        <script>
+            $(function () {
+                $.fn.fileinputBsVersion = "3.3.7"; // if not set, this will be auto-derived
+
+                // initialize plugin with defaults
+                // $("#file").fileinput();
+
+                // with plugin options
+                $("#file").fileinput({
+                    'maxFileCount': 10,
+                    'allowedFileExtensions': ["jpg", "jpeg", "png", "webp"],
+                    'maxFilePreviewSize': 2048,
+                    'showUpload': true,
+                    'previewFileType': 'any',
+                    "elErrorContainer": "#errorBlock"
+                });
+            });
+        </script>
+
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Brand Create' || $title == 'Brand Edit' || $title == 'Category Create' || $title == 'Category Edit' || $title == 'Collor Create' || $title == 'Collor Edit' || $title == 'Size Create' || $title == 'Size Edit'): ?>
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/dashboard/jquery-validation-products-dependencies.js"></script>
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Payment Create' || $title == 'Payment Edit'): ?>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/dashboard/jquery-validation-payments.js"></script>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+        <script>
+            $(function () {
+                $('#phone').mask('(00) 0 0000-0000');
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Order Create' || $title == 'Order Edit'): ?>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="/public/js/validations/dashboard/jquery-validation-orders.js"></script>
+        <!-- Jquery Mask Input -->
+        <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+        <script>
+            $(function () {
+                $('#phone').mask('(00) 0 0000-0000');
+            });
+        </script>
+    <?php endif; ?>
+
+    <!-- Session success -->
+    <?php if (isset($_SESSION['success'])): ?>
+        <script>
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById(id).submit();
-                }
+                position: "top-end",
+                icon: "success",
+                title: "<?= $_SESSION['success'] ?>",
+                showConfirmButton: false,
+                timer: 2500
             });
-        }
-    </script>
-<?php endif; ?>
+        </script>
+    <?php endif; ?>
 
-<?php if (isset($title) &&  $title == 'Brand Create' || $title == 'Brand Edit' ||  $title == 'Category Create' || $title == 'Category Edit' ||  $title == 'Collor Create' || $title == 'Collor Edit' || $title == 'Size Create' || $title == 'Size Edit'): ?>
-    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="/public/js/validations/dashboard/jquery-validation-products-dependencies.js"></script>
-<?php endif; ?>
-
-<?php if (isset($title) && $title == 'Payment Create' || $title == 'Payment Edit'): ?>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="/public/js/validations/dashboard/jquery-validation-payments.js"></script>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-    <script>
-        $(function () {
-            $('#phone').mask('(00) 0 0000-0000');
-        });
-    </script>
-<?php endif; ?>
-
-<?php if (isset($title) && $title == 'Product Create' || $title == 'Product Edit'): ?>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="/public/js/validations/dashboard/jquery-validation-products.js"></script>
-    <script>
-        $(function () {
-            // Type as you slug
-            $("#name").keyup(function () {
-                var Text = $(this).val();
-                Text = Text.toLowerCase();
-                Text = Text.replace(/[^\w ]+/g, "");
-                Text = Text.replace(/ +/g, "-");
-                $("#slug").val(Text);
+    <!-- Session Error -->
+    <?php if (isset($_SESSION['error'])): ?>
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "<?= $_SESSION['error'] ?>",
+                showConfirmButton: false,
+                timer: 2500
             });
-        });
-    </script>
-<?php endif; ?>
-
-<?php if (isset($title) && $title == 'Order Create' || $title == 'Order Edit'): ?>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="/public/js/validations/dashboard/jquery-validation-orders.js"></script>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-    <script>
-        $(function () {
-            $('#phone').mask('(00) 0 0000-0000');
-        });
-    </script>
-<?php endif; ?>
-
-<?php if (isset($title) && $title == 'Image Create' || $title == 'Image Edit'): ?>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="/public/js/validations/dashboard/jquery-validation-images.js"></script>
-    <!-- Jquery Mask Input -->
-    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
-    <!-- Blueimp File Upload -->
-    <script src="/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-    <script>
-        $(function () {
-            $('#phone').mask('(00) 0 0000-0000');
-        });
-    </script>
-<?php endif; ?>
-
-<!-- Session success -->
-<?php if (isset($_SESSION['success'])): ?>
-    <script>
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "<?= $_SESSION['success'] ?>",
-            showConfirmButton: false,
-            timer: 2500
-        });
-    </script>
-<?php endif; ?>
-
-<!-- Session Error -->
-<?php if (isset($_SESSION['error'])): ?>
-    <script>
-        Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: "<?= $_SESSION['error'] ?>",
-            showConfirmButton: false,
-            timer: 2500
-        });
-    </script>
-<?php endif; ?>
+        </script>
+    <?php endif; ?>
 
     <script src="/public/js/admin/scripts.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 
     <script src="/public/js/admin/demo/chart-area-demo.js"></script>
+
     <script src="/public/js/admin/demo/chart-bar-demo.js"></script>
 
     <script src="/public/js/admin/datatables-simple-demo.js"></script>

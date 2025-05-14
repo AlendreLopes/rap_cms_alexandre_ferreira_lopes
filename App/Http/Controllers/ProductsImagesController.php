@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\App;
 use App\Common\Sessions;
-use App\Http\Models\Products;
-
+use App\Http\Models\ProductsImages;
 
 class ProductsImagesController
 {
@@ -13,27 +12,34 @@ class ProductsImagesController
 
     public function __construct()
     {
-        $this->model = new Products();
+        $this->model = new ProductsImages();
     }
 
     public function index($views)
     {
-        $products = $this->model->index();
-
+        // Title
+        $title = 'Products Images';
+        // 
+        $images = $this->model->index();
+        // 
         return require httpLayouts('Admin/AdminLayout.php');
     }
 
     public function show($views, $id)
     {
+        // Title
+        $title = 'Show Image';
+        // 
         $show = $this->model->show($id);
-
+        // 
         return require httpLayouts('Admin/AdminLayout.php');
     }
 
-    public function create($views)
+    public function create($views, $product_id)
     {
         // Title
-        $title = 'Create Product';
+        $title = 'Create Image';
+        $product = $product_id;
         // Errors
         $errors = [];
         $errors['errors'] = Sessions::get('errors');
@@ -42,9 +48,9 @@ class ProductsImagesController
         return require httpLayouts('Admin/AdminLayout.php');
     }
 
-    public function store()
+    public function store($adm)
     {
-        $this->model->create();
+        return $this->model->create($adm);
     }
 
     public function edit($views, $id)

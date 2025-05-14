@@ -1,6 +1,8 @@
 node_modules
 vendor
-public/images/products
-public/images/users
+public/assets/images/products
+public/assets/images/users
 
+public/assets/uploads/products
+public/assets/uploads/users
 
