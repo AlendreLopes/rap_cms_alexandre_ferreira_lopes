@@ -25,6 +25,14 @@ class ProductsImagesController
         return require httpLayouts('Admin/AdminLayout.php');
     }
 
+    public function carouselSite()
+    {
+
+        $images = $this->model->carouselSite();
+        return $images;
+
+    }
+
     public function show($views, $id)
     {
         // Title

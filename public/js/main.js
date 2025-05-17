@@ -25,9 +25,8 @@ $(function () {
         }
     });
 
-    // Blueimp Upload File
-    // $('#fileupload').fileupload();
-
+    // $('#smartcart').smartCart();
+    
     // // Data tables
     $('.table').DataTable();
 

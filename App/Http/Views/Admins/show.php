@@ -15,13 +15,18 @@
 
                 <h5>
                     <i class="fa-solid fa-id-card" style="font-size:30px; color:blueviolet;"></i>
-                    Personal Information
+                    Personal Information <?= "ID Admin {$admin['id']} ID Session {$_SESSION['rap_cms_adm']['userId']}" ?>
                 </h5>
-
-                <a href="/administrators/edit" class="btn btn-outline-success btn-sm">
-                    <i class="fa fa-edit" aria-hidden="true"></i> Edit
-                </a>
-
+                <?php if ($admin['id'] === $_SESSION['rap_cms_adm']['userId']): ?>
+                    <a href="/administrators/edit" class="btn btn-outline-success btn-sm">
+                        <i class="fa fa-edit" aria-hidden="true"></i> Edit
+                    </a>
+                    <?php
+                else: ?>
+                    Not authorized to <i class="fa fa-edit" aria-hidden="true"></i>!
+                    <?php
+                endif;
+                ?>
             </div>
 
             <div class="card-body">
@@ -56,10 +61,16 @@
                     <i class="fa-solid fa-user-secret" style="font-size:30px; color:blueviolet;"></i>
                     Security Account
                 </h5>
-
-                <a href="/administrators/security" class="btn btn-outline-success btn-sm">
-                    <i class="fa fa-edit" aria-hidden="true"></i> Edit
-                </a>
+                <?php if ($admin['id'] === $_SESSION['rap_cms_adm']['userId']): ?>
+                    <a href="/administrators/security" class="btn btn-outline-success btn-sm">
+                        <i class="fa fa-edit" aria-hidden="true"></i> Edit
+                    </a>
+                    <?php
+                else: ?>
+                    Not authorized to <i class="fa fa-edit" aria-hidden="true"></i>!
+                    <?php
+                endif;
+                ?>
             </div>
 
         </div>

@@ -53,6 +53,15 @@ class AdminsController
         return require httpLayouts('Admin/AdminLayout.php');
     }
 
+    public function usersAdmins($views)
+    {
+        // Title
+        $title = 'Users Administrators';
+        // 
+        $admins = $this->model->index();
+        return require httpLayouts('Admin/AdminLayout.php');
+    }
+
     /**
      * Summary of show
      * @param string $views

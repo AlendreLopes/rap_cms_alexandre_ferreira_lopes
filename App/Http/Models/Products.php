@@ -24,6 +24,17 @@ class Products
 
     }
 
+    public function productsSite()
+    {
+
+        $connection = App::resolve(Connection::class);
+        $query = "SELECT * FROM products AS p JOIN products_images AS img ON p.id = img.product_id";
+        $products = $connection->query($query)->fetchAll();
+
+        return $products;
+
+    }
+
     public function show($id)
     {
         $connection = App::resolve(Connection::class);

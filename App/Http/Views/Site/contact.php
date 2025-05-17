@@ -1,8 +1,8 @@
 <!-- Contact Section -->
-<section id="contact" class="contact section">
+<section id="contact" class="contact py-5">
 
     <!-- Section Title -->
-    <div class="container text-center mb-3">
+    <div class="container text-center mt-5 mb-3">
         <h2>Contact</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
     </div>

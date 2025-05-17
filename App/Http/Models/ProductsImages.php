@@ -15,12 +15,21 @@ class ProductsImages
     {
 
         $connection = App::resolve(Connection::class);
-        // $query = "SELECT * FROM products_images_view";
-        $query = "SELECT * FROM products_images";
+        $query = "SELECT * FROM products_images AS img LEFT JOIN products AS p ON img.product_id = p.id";
 
-        $products = $connection->query($query)->fetchAll();
+        $images = $connection->query($query)->fetchAll();
 
-        return $products;
+        return $images;
+
+    }
+
+    public function carouselSite()
+    {
+
+        $connection = App::resolve(Connection::class);
+        $query = "SELECT * FROM products_images AS img LEFT JOIN products AS p ON img.product_id = p.id";
+        $images = $connection->query($query)->fetchAll();
+        return $images;
 
     }
 
@@ -189,4 +198,5 @@ class ProductsImages
             }
         }
     }
+
 }

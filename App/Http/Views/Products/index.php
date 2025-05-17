@@ -4,12 +4,6 @@
 
         <h1 class="display-4 fst-italic">Ours Products</h1>
 
-        <?php if (isset($_SESSION['rap_cms'])): ?>
-            <p class="lead mb-0 text-end">
-                <a href="/products/create" class="text-info-emphasis fw-bold">New product</a>
-            </p>
-        <?php endif; ?>
-
     </div>
 
 </div>
@@ -24,51 +18,81 @@
 
     <?php else: ?>
 
-        <?php foreach ($products as $product): ?>
+        <!-- START THE FEATURETTES -->
+        <hr class="featurette-divider">
 
-            <div class="col-md-6">
+        <?php
+        foreach ($products as $key => $value):
 
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            if ($key % 2 == 1):
+                ?>
 
-                    <div class="col p-4 d-flex flex-column position-static">
+                <div class="row">
 
-                        <strong
-                            class="d-inline-block mb-2 <?= ((htmlspecialchars($product['id']) % 2) == 0) ? 'text-success-emphasis' : 'text-primary-emphasis'; ?>"><?= $product['title'] ?></strong>
+                    <div class="col-6">
 
-                        <h3 class="mb-0"><?= htmlspecialchars($product['title']) ?></h3>
+                        <h2 class="featurette-heading fw-normal lh-1 text-center">
+                            <?= $value['name'] ?>
+                        </h2>
 
-                        <div class="mb-1 text-body-secondary">Nov 12</div>
+                        <span class="text-body-secondary text-wrap" style="font-size: 2rem;">
+                            <?= substr($value['description'], 0, 30) ?>...
+                        </span>
 
-                        <p class="card-text mb-auto">
-                            <?= substr(htmlspecialchars($product['description']), 0, 15) ?>
+                        <p class="text-end">
+                            <a class="btn btn-lg btn-danger" href="/products/details?id=<?= $value["product_id"] ?>">
+                                <i class="fa-solid fa-cart-plus"></i> Add to cart
+                            </a>
                         </p>
-
-                        <a href="/blog/show?id=<?= htmlspecialchars($product['id']) ?>"
-                            class="<?= ((htmlspecialchars($product['id']) % 2) == 0) ? 'link-success' : 'link-primary'; ?> link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
-                            <i class="fa fa-list" aria-hidden="true"></i>
-                            Continue reading
-                            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                        </a>
 
                     </div>
 
-                    <div class="col-auto d-none d-lg-block">
+                    <div class="col-6 text-center">
+                        <img src="<?= $value['file_path'] . $value['file'] ?>" alt="">
+                    </div>
 
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
-                            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em">Image</text>
-                        </svg>
+                </div>
+
+                <hr class="featurette-divider">
+
+                <?php
+            else:
+                ?>
+
+                <div class="row">
+
+                    <div class="col-6 text-center">
+                        <img src="<?= $value['file_path'] . $value['file'] ?>" alt="">
+                    </div>
+
+                    <div class="col-6">
+
+                        <h2 class="featurette-heading fw-normal lh-1 text-center">
+                            <?= $value['name'] ?>
+                        </h2>
+
+                        <span class="text-body-secondary text-wrap" style="font-size: 2rem;">
+                            <?= substr($value['description'], 0, 30) ?>...
+                        </span>
+
+                        <p>
+                            <a class="btn btn-lg btn-danger" href="/products/details?id=<?= $value["product_id"] ?>">
+                                <i class="fa-solid fa-cart-plus"></i> Add to cart
+                            </a>
+                        </p>
 
                     </div>
 
                 </div>
 
-            </div>
+                <hr class="featurette-divider">
+                <?php
+            endif;
 
-        <?php endforeach; ?>
-        
+        endforeach; ?>
+
+        <!-- /END THE FEATURETTES -->
+
     <?php endif; ?>
 
 </div>

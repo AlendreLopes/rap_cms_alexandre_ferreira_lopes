@@ -11,33 +11,21 @@ class OrdersForm
 
     public function __construct(public array $attributes)
     {
-
-        if (!Validation::string($attributes['zip_code'])) {
-            $this->errors['zip_code'] = 'Provide Zip Code.';
+        
+        if (!Validation::string($attributes['user_id'])) {
+            $this->errors['user_id'] = 'Provide a User.';
         }
 
-        if (!Validation::string($attributes['address'])) {
-            $this->errors['address'] = 'Provide a address.';
+        if (!Validation::string($attributes['user_address_id'])) {
+            $this->errors['user_address_id'] = 'Provide a address.';
         }
 
-        if (!Validation::string($attributes['address_number'])) {
-            $this->errors['address_number'] = 'Provide a address number.';
+        if (!Validation::string($attributes['cart_products_total'])) {
+            $this->errors['cart_products_total'] = 'Provide a total products in cart.';
         }
 
-        if (!Validation::string($attributes['neighborhood'])) {
-            $this->errors['neighborhood'] = 'Provide a neighborhood.';
-        }
-
-        if (!Validation::string($attributes['city'])) {
-            $this->errors['city'] = 'Provide a city.';
-        }
-
-        if (!Validation::string($attributes['state'])) {
-            $this->errors['state'] = 'Provide a state.';
-        }
-
-        if (!Validation::string($attributes['country'])) {
-            $this->errors['country'] = 'Provide a country.';
+        if (!Validation::string($attributes['cart_products_amount'])) {
+            $this->errors['cart_products_amount'] = 'Provide a total amount.';
         }
 
     }

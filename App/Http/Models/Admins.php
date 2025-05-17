@@ -12,6 +12,18 @@ use App\Http\Models\Forms\RegisterForm;
 
 class Admins
 {
+
+    public function index()
+    {
+        $connection = App::resolve(Connection::class);
+
+        $query = "SELECT * FROM administrators";
+
+        $admins = $connection->query($query)->fetchAll();
+
+        return $admins;
+
+    }
     
     public function login($email, $password)
     {

@@ -25,7 +25,7 @@
 
         <a class="navbar-brand col-lg-3" href="/" title="Gift Shopping">
             <i class="fa-solid fa-gift" style="font-size:30px; color:blueviolet;"></i>
-            Hello, <?= $_SESSION['rap_cms']['userName'] ?? 'guest' ?>
+            Hello, <?= isset($_SESSION['rap_cms']) ? $_SESSION['rap_cms']['userName'] : (isset($_SESSION['rap_cms_adm']) ? $_SESSION['rap_cms_adm']['userName'] : 'guest') ?>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -36,30 +36,39 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
 
             <ul class="navbar-nav col-lg-8 justify-content-lg-center">
+
                 <li class="nav-item">
                     <a class="nav-link <?= sameUri('/') ? 'ative' : '' ?>" aria-current="page" href="/">Home</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link <?= sameUri('/product') ? 'ative' : '' ?>" href="/products">Products</a>
                 </li>
-                <!-- Hidden this links -->
-                <!-- <li class="nav-item">
+
+                <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                        aria-expanded="false">Dropdown</a>
+                        aria-expanded="false">Categories</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                </li> -->
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link <?= sameUri('/blog') ? 'ative' : '' ?>" href="/blog">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= sameUri('/contact') ? 'ative' : '' ?>" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= sameUri('/cart') ? 'ative' : '' ?>" href="/cart">
+                        Cart (<?= isset($_SESSION['rap_cms_cart']['products']) ? count($_SESSION['rap_cms_cart']['products']) : 0 ?>)
+                    </a>
                 </li>
             </ul>
 
@@ -74,7 +83,8 @@
                 <?php if (isset($_SESSION['rap_cms_adm'])): ?>
                     <!-- Adms Logge in -->
                     <div class="dropdown text-end mx-2">
-                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle mt-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle mt-1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user-tie" style="font-size:26px;"></i>
                         </a>
                         <ul class="dropdown-menu text-small dropdown-menu-end shadow">
@@ -95,16 +105,19 @@
                             </li>
                         </ul>
                     </div>
-                <?php elseif(isset($_SESSION['rap_cms'])): ?>
+                <?php elseif (isset($_SESSION['rap_cms'])): ?>
                     <!-- User Logge in -->
                     <div class="dropdown text-end mx-2">
-                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle mt-1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle mt-1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user" style="font-size:26px;"></i>
                         </a>
                         <ul class="dropdown-menu text-small dropdown-menu-end shadow">
-                            <li><a class="dropdown-item" href="<?= $_SESSION['rap_cms']['dashboard']['index'] ?>">Dashboard</a></li>
+                            <li><a class="dropdown-item"
+                                    href="<?= $_SESSION['rap_cms']['dashboard']['index'] ?>">Dashboard</a></li>
                             <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="<?= $_SESSION['rap_cms']['dashboard']['profile'] ?>">Profile</a></li>
+                            <li><a class="dropdown-item"
+                                    href="<?= $_SESSION['rap_cms']['dashboard']['profile'] ?>">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -116,16 +129,16 @@
                         </ul>
                     </div>
                 <?php else: ?>
-                        <div class="d-flex flex justify-content-lg-center">
-                            <!-- Register -->
-                            <a href="/register" class="btn btn-outline-success mx-1">
-                                <i class="fa-solid fa-user-plus"></i> Register
-                            </a>
-                            <!-- Login -->
-                            <a href="/login" class="align-items-center btn btn-outline-info mx-1">
-                                <i class="fa fa-sign-in" aria-hidden="true"></i> Login
-                            </a>
-                        </div>
+                    <div class="d-flex flex justify-content-lg-center">
+                        <!-- Register -->
+                        <a href="/register" class="btn btn-outline-success mx-1">
+                            <i class="fa-solid fa-user-plus"></i> Register
+                        </a>
+                        <!-- Login -->
+                        <a href="/login" class="align-items-center btn btn-outline-info mx-1">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+                        </a>
+                    </div>
                 <?php endif; ?>
                 <!-- Toggle theme -->
                 <div class="dropdown me-1 bd-mode-toggle">

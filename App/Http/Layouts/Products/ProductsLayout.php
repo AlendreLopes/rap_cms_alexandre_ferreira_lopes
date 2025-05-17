@@ -16,14 +16,8 @@
     <!-- Fontawesome-icons -->
     <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="/node_modules/datatables/media/css/jquery.dataTables.min.css">
-
     <!-- Sweetalert 2 -->
     <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
-
-    <!-- Bluimp Css -->
-    <link rel="stylesheet" href="/node_modules/blueimp-file-upload/css/jquery.fileupload.css">
 
     <!-- CSS Main -->
     <link rel="stylesheet" href="/public/styles/main.css">
@@ -57,9 +51,6 @@
 
     <!-- Jquery JS -->
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

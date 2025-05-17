@@ -34,17 +34,23 @@ class ProductsController
         $this->images = new ProductsImages();
     }
 
-    public function indexProductsSite($views)
+    public function productsSite($views)
     {
-        $products = $this->model->index();
+        $products = $this->model->productsSite();
         return require httpLayouts('Products/ProductsLayout.php');
     }
 
     public function showProductsSite($views, $id)
     {
-        $details = $this->model->show($id);
-
+        $produtcDetails = $this->model->show($id);
+        $produtcDetailsImages = $this->images->show($id);
         return require httpLayouts('Products/ProductsLayout.php');
+    }
+
+    public function indexProductsSite()
+    {
+        $products = $this->model->productsSite();
+        return $products;
     }
 
     public function index($views)

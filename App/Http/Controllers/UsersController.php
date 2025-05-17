@@ -98,4 +98,43 @@ class UsersController
         redirect('/dashboard');
     }
 
+    public function userDataCheckout($id)
+    {
+        $user = $this->model->show($id);
+        return $user;
+    }
+
+    public function userAddressCheckout($id)
+    {
+        $user = $this->address->getUserAddressByUser($id);
+        return $user;
+    }
+
+    public function orders(string $views, $user)
+    {
+        // Title
+        $title = 'Orders';
+        // 
+        $orders = $this->orders->ordersByUsersId($user);
+        // 
+        return require httpLayouts('Users/UserLayout.php');
+    }
+
+    public function ordersDetails(string $views,  $order, $user)
+    {
+        // Title
+        $title = 'Orders Details';
+        // 
+        $userData = $this->userDataCheckout($user);
+        $order = $this->orders->ordersByIdAndByUsersId($order, $user);
+        $orderId = $order['id'];
+        $orders = $this->orders->ordersByUsersId($user);
+        // 
+        return require httpLayouts('Users/UserLayout.php');
+    }
+
+    public function ordersCreate($product)
+    {
+        $this->orders->create( $product);
+    }
 }

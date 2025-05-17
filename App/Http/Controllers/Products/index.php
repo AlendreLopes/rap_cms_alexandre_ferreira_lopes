@@ -3,4 +3,4 @@
 use App\Http\Controllers\ProductsController;
 // 
 // Products Layout
-$products = (new ProductsController)->indexProductsSite($views);
+$products = (new ProductsController)->productsSite($views);

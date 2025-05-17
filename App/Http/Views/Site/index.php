@@ -1,48 +1,44 @@
 <!-- START THE FEATURETTES -->
 <hr class="featurette-divider">
 
-<div class="row">
-    <div class="col-md-8">
-        <h2 class="featurette-heading fw-normal lh-1 text-center">
-            See our collections of <span class="text-body-secondary"> vests.</span>
-        </h2>
-    </div>
-    <div class="col-md-4 text-center">
-        <a href="#" title="See details">
-            <i class="fa-solid fa-vest" style="font-size:300px; color:yellow;"></i>
-        </a>
-    </div>
-</div>
+<?php
+foreach ($products as $key => $value):
 
-<hr class="featurette-divider">
+    if ($key % 2 == 1):
+        ?>
 
-<div class="row featurette">
-    <div class="col-md-8 order-md-2 text-end">
-        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good.
-            <br>
-            <span class="text-body-secondary">See for yourself.</span>
-        </h2>
-    </div>
-    <div class="col-md-4 order-md-1 text-center">
-        <a href="#" title="See details">
-            <i class="fa-solid fa-shoe-prints m-5" style="font-size:300px; color:violet;"></i>
-        </a>
-    </div>
-</div>
+        <div class="row sc-product-item">
 
-<hr class="featurette-divider">
+            <div class="col-6">
 
-<div class="row featurette">
-    <div class="col-md-8 text-center">
-        <h2 class="featurette-heading fw-normal lh-1">
-            And yes, we have <span class="text-body-secondary">pet accessories.</span>
-        </h2>
-    </div>
-    <div class="col-md-4 text-center">
-        <a href="#" title="See our accessories">
-            <i class="fa-solid fa-paw" style="font-size:300px;"></i>
-        </a>
-    </div>
-</div>
+                <h2 class="featurette-heading fw-normal lh-1 text-center">
+                    <?= $value['name'] ?>
+                </h2>
+
+                <span class="text-body-secondary text-wrap" style="font-size: 2rem;">
+                    <?= substr($value['description'], 0, 30) ?>...
+                </span>
+
+                <p class="text-end">
+                    <a class="btn btn-lg btn-danger" href="/products/details?id=<?= $value["product_id"] ?>">
+                                    <i class="fa-solid fa-cart-plus"></i> Add to cart
+                                </a>
+
+                </p>
+
+            </div>
+
+            <div class="col-6 text-center">
+                <img src="<?= $value['file_path'] . $value['file'] ?>" alt="">
+            </div>
+
+        </div>
+
+        <hr class="featurette-divider">
+
+        <?php
+    endif;
+
+endforeach; ?>
 
 <!-- /END THE FEATURETTES -->

@@ -4,19 +4,18 @@ use App\Common\Sessions;
 use App\Common\Validations\ValidationException;
 use App\Routers\Router;
 
+// Standard PHP Library
+require 'vendor/autoload.php';
+
 session_start();
+
+require 'App/Bootstrap.php';
 
 // Controllers and Views
 require 'App/Http/ControllersAndViews.php';
 
 // Functions
 require appCommon('Functions.php');
-
-// Standard PHP Library
-require 'vendor/autoload.php';
-
-// Bootstrap
-require app('Bootstrap.php');
 
 // Router
 $router = new Router();
@@ -35,12 +34,18 @@ $_method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 try {
 
     $router->route($endpoint, $_method);
+
     if (isset($_SESSION['success'])) {
         unset($_SESSION['success']);
     }
+
     if (isset($_SESSION['error'])) {
         unset($_SESSION['error']);
     }
+
+    // if (isset($_SESSION['rap_cms_cart'])) {
+    //     unset($_SESSION['rap_cms_cart']);
+    // }
 
 } catch (ValidationException $exception) {
 

@@ -47,17 +47,15 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item"
-                            href="<?= $_SESSION['rap_cms_adm']['dashboard']['profile'] ?>">Settings</a>
+                            href="<?= $_SESSION['rap_cms_adm']['dashboard']['profile'] ?>">Profile</a>
                     </li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
                     <li>
                         <form action="<?= $_SESSION['rap_cms_adm']['dashboard']['logout'] ?>" method="POST">
                             <input type="hidden" name="logout">
-                            <button class="dropdown-item"
-                                href="<?= $_SESSION['rap_cms_adm']['dashboard']['logout'] ?>">Logout</button>
+                            <button class="dropdown-item">Logout</button>
                         </form>
                     </li>
                 </ul>
@@ -87,11 +85,6 @@
                         <a class="nav-link" href="/administrators/orders">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-basket-shopping"></i></div>
                             Orders
-                        </a>
-
-                        <a class="nav-link" href="/administrators/payments">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-money-check-dollar"></i></div>
-                            Payments
                         </a>
 
                         <a class="nav-link" href="/administrators/products">
@@ -138,6 +131,11 @@
                         <a class="nav-link" href="/administrators/users">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
                             Users
+                        </a>
+
+                        <a class="nav-link" href="/administrators/admins">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
+                            Users Admins
                         </a>
 
 
@@ -354,14 +352,6 @@
     <?php endif; ?>
 
     <script src="/public/js/admin/scripts.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-
-    <script src="/public/js/admin/demo/chart-area-demo.js"></script>
-
-    <script src="/public/js/admin/demo/chart-bar-demo.js"></script>
-
-    <script src="/public/js/admin/datatables-simple-demo.js"></script>
 
 </body>
 

@@ -22,8 +22,8 @@
     <!-- Sweetalert 2 -->
     <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
 
-    <!-- Bluimp Css -->
-    <link rel="stylesheet" href="/node_modules/blueimp-file-upload/css/jquery.fileupload.css">
+    <!-- Smart Cart Css -->
+    <!-- <link href="/node_modules/jquery-smartcart/dist/css/smart_cart.min.css"> -->
 
     <!-- CSS Main -->
     <link rel="stylesheet" href="/public/styles/main.css">
@@ -42,7 +42,7 @@
 
         <!-- Carousel -->
         <section class="mt-5 pt-3">
-            <?php require httpViews('Site/Partials/carousel.php'); ?>
+            <?php require httpControllers('Site/Partials/carousel.php'); ?>
         </section>
 
     </header>
@@ -63,19 +63,22 @@
     <!-- Scripts -->
 
     <!-- Jquery JS -->
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
 
     <!-- DataTables JS -->
-    <script src="/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
 
     <!-- Bootstrap JS -->
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Sweet alert js -->
-    <script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script type="text/javascript" src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <!-- Fontawesome icons -->
-    <script src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script type="text/javascript" src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+
+    <!-- Smart Cart -->
+     <!-- <script type="text/javascript" src="/node_modules/jquery-smartcart/dist/js/jquery.smartCart.min.js"></script> -->
 
     <!-- Main scripts -->
     <script src="/public/js/main.js"></script>

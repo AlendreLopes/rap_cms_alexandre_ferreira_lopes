@@ -6,6 +6,22 @@ $router->get('/contact', 'Site/contact.php');
 // 
 // Products Guest
 $router->get('/products', 'Products/index.php');
+$router->get('/products/details', 'Products/details.php');
+// 
+// Cart Guest
+$router->get('/cart', 'Cart/index.php');
+// Cart Add one
+$router->post('/cart/add', 'Cart/Manage/create.php');
+// Cart Checkout
+$router->get('/cart/checkout', 'Cart/checkout.php')->only('auth');
+// Cart Plus one
+$router->put('/cart/plus-one', 'Cart/Manage/store.php');
+// Cart Minus one
+$router->patch('/cart/minus-one', 'Cart/Manage/update.php');
+// Cart Remove
+$router->patch('/cart/remove', 'Cart/Manage/remove.php');
+// Cart Clear Cart
+$router->delete('/cart/clear', 'Cart/Manage/destroy.php');
 // 
 // Blogs
 $router->get('/blog', 'Blog/index.php');
@@ -35,15 +51,12 @@ $router->put('/register/create', 'Site/Profile/store.php')->only('guest');
 // 
 // Users DASHBOARD ACCESS AFTER LOGIN
 $router->get('/dashboard', 'Users/index.php')->only('auth');
-// 
 // Users Profile
 $router->get('/dashboard/user/profile', 'Users/show.php')->only('auth');
 $router->get('/dashboard/user/edit', 'Users/edit.php')->only('auth');
 $router->patch('/dashboard/user/update', 'Users/Profile/update.php')->only('auth');
-
 $router->get('/dashboard/user/security', 'Users/security_account.php')->only('auth');
 $router->patch('/dashboard/user/profile/security', 'Users/Profile/security_account.php')->only('auth');
-
 $router->delete('/dashboard/user/delete', 'Users/Profile/destroy.php')->only('auth');
 // Users Address
 $router->get('/dashboard/user/address', 'Users/Address/index.php')->only('auth');
@@ -56,8 +69,13 @@ $router->delete('/dashboard/user/address/delete', 'Users/Address/Manage/destroy.
 $router->post('/dashboard/logout', 'Site/Profile/logout.php')->only('auth');
 // 
 // Users Orders / Payments
-$router->get('/dashboard/payments', 'Users/Payments/index.php')->only('auth');
 $router->get('/dashboard/orders', 'Users/Orders/index.php')->only('auth');
+$router->get('/dashboard/orders/details', 'Users/Orders/details.php')->only('auth');
+$router->post('/dashboard/orders/create', 'Users/Orders/Manage/store.php')->only('auth');
+// 
+$router->get('/dashboard/payments', 'Users/Payments/index.php')->only('auth');
+$router->get('/dashboard/payments/create', 'Users/Payments/create.php')->only('auth');
+$router->get('/dashboard/payments/store', 'Users/Payments/Manage/store.php')->only('auth');
 //
 // 
 // 
@@ -75,6 +93,7 @@ $router->put('/administrators/register/store', 'Admins/Profile/store.php');
 // 
 // Administrators  DASHBOARD ACCESS AFTER LOGIN
 $router->get('/administrators', 'Admins/index.php')->only('adm');
+$router->get('/administrators/admins', 'Admins/usersAdminstrators.php')->only('adm');
 $router->get('/administrators/show', 'Admins/show.php')->only('adm');
 $router->get('/administrators/edit', 'Admins/edit.php')->only('adm');
 $router->patch('/administrators/update', 'Admins/Profile/update.php')->only('adm');

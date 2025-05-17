@@ -22,9 +22,6 @@
     <!-- Sweetalert 2 -->
     <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
 
-    <!-- Bluimp Css -->
-    <link rel="stylesheet" href="/node_modules/blueimp-file-upload/css/jquery.fileupload.css">
-
     <!-- CSS Main -->
     <link rel="stylesheet" href="/public/styles/main.css">
 
@@ -79,12 +76,12 @@
 
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
 
-                <a href="/"
+                <a href="/dashboard"
                     class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                     <svg class="bi pe-none me-2" width="40" height="32">
                         <use xlink:href="#home" />
                     </svg>
-                    <span class="fs-4">Profile</span>
+                    <span class="fs-4">Dashboard</span>
                 </a>
 
                 <hr>
@@ -92,29 +89,24 @@
                 <ul class="nav nav-pills flex-column mb-auto">
 
                     <li>
-                        <a href="/dashboard" class="nav-link link-body-emphasis">
-                            <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#speedometer2" />
-                            </svg>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/orders" class="nav-link link-body-emphasis">
+                        <a href="/dashboard/orders?id=<?= $_SESSION['rap_cms']['userId'] ?>"
+                            class="nav-link link-body-emphasis">
                             <svg class="bi pe-none me-2" width="16" height="16">
                                 <use xlink:href="#table" />
                             </svg>
                             Orders
                         </a>
                     </li>
+
                     <li>
-                        <a href="#" class="nav-link link-body-emphasis">
+                        <a href="/dashboard/payments" class="nav-link link-body-emphasis">
                             <svg class="bi pe-none me-2" width="16" height="16">
-                                <use xlink:href="#grid" />
+                                <use xlink:href="#table" />
                             </svg>
-                            Products
+                            Payments
                         </a>
                     </li>
+
                 </ul>
 
             </div>
@@ -195,7 +187,6 @@
     <?php endif; ?>
 
     <?php if (isset($title) && $title == 'Create Address' && $title == 'Edit Address'): ?>
-        <!-- Jquery Mask Input -->
         <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
         <script src="/public/js/validations/dashboard/jquery-validation-address.js"></script>
         <!-- Jquery Mask Input -->
@@ -213,6 +204,37 @@
 
             });
         </script>
+    <?php endif; ?>
+
+    <?php if (isset($title) && $title == 'Payments'): ?>
+        
+        <script src="https://www.paypal.com/sdk/js?client-id=AfxOiaE8x0T-FjKcdARPPez3ArsvnvaTkjuJkDCUJ3-ZX9lYXq7RHPvXTVYp-TqcLZMZ8Sl8eZU5i5xJ&currency=BRL"></script>
+
+        <script>
+            paypal.Buttons({
+                // Sets up the transaction when a payment button is clicked
+                createOrder: function (data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: "<?= $total; ?>"
+                            }
+                        }]
+                    });
+                },
+                // Finalize the transaction after payer approval
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (orderData) {
+                        // Successful capture! For dev/demo purposes:
+                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                        var transaction = orderData.purchase_units[0].payments.captures[0];
+                        alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\n See console for all available details');
+                        window.location.href = "/dashboard/payments/store?transaction_id=" + transaction.id + "&order_id=" + <?= $order_id ?>;
+                    });
+                }
+            }).render('#paypal-button-container');
+        </script>
+
     <?php endif; ?>
 
     <!-- Session success -->
